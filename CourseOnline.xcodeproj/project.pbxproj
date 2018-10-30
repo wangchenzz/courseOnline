@@ -7,14 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042C16EA218840B00056E341 /* UIThrTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C16E9218840B00056E341 /* UIThrTableView.m */; };
+		04309AF0217F1A3400CECFD7 /* errorHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04309AEF217F1A3400CECFD7 /* errorHeader.m */; };
+		0445A0D1218708BC00FC9828 /* SimpleVedioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445A0D0218708BC00FC9828 /* SimpleVedioView.m */; };
+		044D9EFE2181BC8D00F28324 /* AlertViewSpecialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044D9EFD2181BC8D00F28324 /* AlertViewSpecialViewController.m */; };
+		045DA2AF2179823E007CA7D8 /* MainPageSourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DA2AE2179823D007CA7D8 /* MainPageSourseViewController.m */; };
+		045DA2B22179CEBA007CA7D8 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DA2B12179CEBA007CA7D8 /* CourseModel.m */; };
+		045DA2B52179D3FC007CA7D8 /* MainPageControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DA2B42179D3FC007CA7D8 /* MainPageControlViewController.m */; };
+		045DA2B82179D7CE007CA7D8 /* timerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 045DA2B72179D7CE007CA7D8 /* timerTool.m */; };
+		0469BDAF2178707E0016183B /* CourseDesignBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0469BDAE2178707E0016183B /* CourseDesignBasicViewController.m */; };
+		0469BDB22178760E0016183B /* UserInfoBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0469BDB12178760E0016183B /* UserInfoBasicViewController.m */; };
+		0469BDB5217883D70016183B /* MainPageCourseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0469BDB4217883D70016183B /* MainPageCourseCollectionViewCell.m */; };
 		04D30AA92175756900D05C3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AA82175756900D05C3D /* main.m */; };
-		04D30AAC2175756900D05C3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AAB2175756900D05C3D /* AppDelegate.m */; };
-		04D30AAF2175756900D05C3D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AAE2175756900D05C3D /* ViewController.m */; };
-		04D30AB22175756900D05C3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D30AB02175756900D05C3D /* Main.storyboard */; };
 		04D30AB42175756900D05C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D30AB32175756900D05C3D /* Assets.xcassets */; };
 		04D30AB72175756900D05C3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D30AB52175756900D05C3D /* LaunchScreen.storyboard */; };
 		04D30AC22175756900D05C3D /* CourseOnlineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AC12175756900D05C3D /* CourseOnlineTests.m */; };
 		04D30ACD2175756900D05C3D /* CourseOnlineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30ACC2175756900D05C3D /* CourseOnlineUITests.m */; };
+		04D30ADF217575ED00D05C3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30ADC217575ED00D05C3D /* AppDelegate.m */; };
+		04D30AE22175762000D05C3D /* JSRservedTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AE12175762000D05C3D /* JSRservedTabBarViewController.m */; };
+		04D30AE62175764C00D05C3D /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AE52175764C00D05C3D /* UIView+Frame.m */; };
+		04D30AE92175765300D05C3D /* INetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AE82175765300D05C3D /* INetworking.m */; };
+		04D30AEF2175767400D05C3D /* NSString+Bounding.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AEE2175767400D05C3D /* NSString+Bounding.m */; };
+		04D30AF62175767C00D05C3D /* NSAttributedString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AF12175767C00D05C3D /* NSAttributedString+Extension.m */; };
+		04D30AF72175767C00D05C3D /* UIColor+niceColorTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AF32175767C00D05C3D /* UIColor+niceColorTip.m */; };
+		04D30AF82175767C00D05C3D /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AF52175767C00D05C3D /* UIImage+Render.m */; };
+		04D30B802175CEC900D05C3D /* MainPageBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30B7F2175CEC900D05C3D /* MainPageBasicViewController.m */; };
+		F566AD2AE09EFDBCB262A3C1 /* libPods-CourseOnline.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA35F99E663C124FABC44D1C /* libPods-CourseOnline.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,13 +53,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042C16E8218840B00056E341 /* UIThrTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIThrTableView.h; sourceTree = "<group>"; };
+		042C16E9218840B00056E341 /* UIThrTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIThrTableView.m; sourceTree = "<group>"; };
+		04309AEE217F1A3400CECFD7 /* errorHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errorHeader.h; sourceTree = "<group>"; };
+		04309AEF217F1A3400CECFD7 /* errorHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = errorHeader.m; sourceTree = "<group>"; };
+		0445A0CF218708BC00FC9828 /* SimpleVedioView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleVedioView.h; sourceTree = "<group>"; };
+		0445A0D0218708BC00FC9828 /* SimpleVedioView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleVedioView.m; sourceTree = "<group>"; };
+		044D9EFC2181BC8D00F28324 /* AlertViewSpecialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertViewSpecialViewController.h; path = ../headPage/AlertViewSpecialViewController.h; sourceTree = "<group>"; };
+		044D9EFD2181BC8D00F28324 /* AlertViewSpecialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertViewSpecialViewController.m; path = ../headPage/AlertViewSpecialViewController.m; sourceTree = "<group>"; };
+		045DA2AD2179823D007CA7D8 /* MainPageSourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageSourseViewController.h; sourceTree = "<group>"; };
+		045DA2AE2179823D007CA7D8 /* MainPageSourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageSourseViewController.m; sourceTree = "<group>"; };
+		045DA2B02179CEBA007CA7D8 /* CourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseModel.h; sourceTree = "<group>"; };
+		045DA2B12179CEBA007CA7D8 /* CourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseModel.m; sourceTree = "<group>"; };
+		045DA2B32179D3FC007CA7D8 /* MainPageControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageControlViewController.h; sourceTree = "<group>"; };
+		045DA2B42179D3FC007CA7D8 /* MainPageControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageControlViewController.m; sourceTree = "<group>"; };
+		045DA2B62179D7CE007CA7D8 /* timerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timerTool.h; sourceTree = "<group>"; };
+		045DA2B72179D7CE007CA7D8 /* timerTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = timerTool.m; sourceTree = "<group>"; };
+		0469BDAD2178707E0016183B /* CourseDesignBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDesignBasicViewController.h; sourceTree = "<group>"; };
+		0469BDAE2178707E0016183B /* CourseDesignBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDesignBasicViewController.m; sourceTree = "<group>"; };
+		0469BDB02178760E0016183B /* UserInfoBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoBasicViewController.h; sourceTree = "<group>"; };
+		0469BDB12178760E0016183B /* UserInfoBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoBasicViewController.m; sourceTree = "<group>"; };
+		0469BDB3217883D70016183B /* MainPageCourseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageCourseCollectionViewCell.h; sourceTree = "<group>"; };
+		0469BDB4217883D70016183B /* MainPageCourseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageCourseCollectionViewCell.m; sourceTree = "<group>"; };
 		04D30AA42175756900D05C3D /* CourseOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D30AA82175756900D05C3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		04D30AAA2175756900D05C3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		04D30AAB2175756900D05C3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04D30AAD2175756900D05C3D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		04D30AAE2175756900D05C3D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		04D30AB12175756900D05C3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04D30AB32175756900D05C3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D30AB62175756900D05C3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D30AB82175756900D05C3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +86,28 @@
 		04D30AC82175756900D05C3D /* CourseOnlineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CourseOnlineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D30ACC2175756900D05C3D /* CourseOnlineUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseOnlineUITests.m; sourceTree = "<group>"; };
 		04D30ACE2175756900D05C3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04D30ADB217575ED00D05C3D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		04D30ADC217575ED00D05C3D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		04D30AE02175762000D05C3D /* JSRservedTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRservedTabBarViewController.h; sourceTree = "<group>"; };
+		04D30AE12175762000D05C3D /* JSRservedTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRservedTabBarViewController.m; sourceTree = "<group>"; };
+		04D30AE32175764300D05C3D /* JSEDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSEDefine.h; sourceTree = "<group>"; };
+		04D30AE42175764C00D05C3D /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		04D30AE52175764C00D05C3D /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		04D30AE72175765300D05C3D /* INetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INetworking.h; sourceTree = "<group>"; };
+		04D30AE82175765300D05C3D /* INetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INetworking.m; sourceTree = "<group>"; };
+		04D30AED2175767400D05C3D /* NSString+Bounding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Bounding.h"; sourceTree = "<group>"; };
+		04D30AEE2175767400D05C3D /* NSString+Bounding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Bounding.m"; sourceTree = "<group>"; };
+		04D30AF02175767C00D05C3D /* NSAttributedString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Extension.h"; sourceTree = "<group>"; };
+		04D30AF12175767C00D05C3D /* NSAttributedString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Extension.m"; sourceTree = "<group>"; };
+		04D30AF22175767C00D05C3D /* UIColor+niceColorTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+niceColorTip.h"; sourceTree = "<group>"; };
+		04D30AF32175767C00D05C3D /* UIColor+niceColorTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+niceColorTip.m"; sourceTree = "<group>"; };
+		04D30AF42175767C00D05C3D /* UIImage+Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Render.h"; sourceTree = "<group>"; };
+		04D30AF52175767C00D05C3D /* UIImage+Render.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Render.m"; sourceTree = "<group>"; };
+		04D30B7E2175CEC900D05C3D /* MainPageBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageBasicViewController.h; sourceTree = "<group>"; };
+		04D30B7F2175CEC900D05C3D /* MainPageBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageBasicViewController.m; sourceTree = "<group>"; };
+		20FAD72C931413FE1A69F0B9 /* Pods-CourseOnline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseOnline.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseOnline/Pods-CourseOnline.release.xcconfig"; sourceTree = "<group>"; };
+		BA35F99E663C124FABC44D1C /* libPods-CourseOnline.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CourseOnline.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A0C0E4577E8A2DD9476720 /* Pods-CourseOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseOnline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseOnline/Pods-CourseOnline.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F566AD2AE09EFDBCB262A3C1 /* libPods-CourseOnline.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +136,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		044D9EFF2181C04A00F28324 /* alert */ = {
+			isa = PBXGroup;
+			children = (
+				044D9EFC2181BC8D00F28324 /* AlertViewSpecialViewController.h */,
+				044D9EFD2181BC8D00F28324 /* AlertViewSpecialViewController.m */,
+				0445A0CF218708BC00FC9828 /* SimpleVedioView.h */,
+				0445A0D0218708BC00FC9828 /* SimpleVedioView.m */,
+				042C16E8218840B00056E341 /* UIThrTableView.h */,
+				042C16E9218840B00056E341 /* UIThrTableView.m */,
+			);
+			path = alert;
+			sourceTree = "<group>";
+		};
+		0469BDAB21786A6A0016183B /* courseDesign */ = {
+			isa = PBXGroup;
+			children = (
+				0469BDAD2178707E0016183B /* CourseDesignBasicViewController.h */,
+				0469BDAE2178707E0016183B /* CourseDesignBasicViewController.m */,
+			);
+			path = courseDesign;
+			sourceTree = "<group>";
+		};
+		0469BDAC21786A6A0016183B /* i */ = {
+			isa = PBXGroup;
+			children = (
+				0469BDB02178760E0016183B /* UserInfoBasicViewController.h */,
+				0469BDB12178760E0016183B /* UserInfoBasicViewController.m */,
+			);
+			path = i;
+			sourceTree = "<group>";
+		};
 		04D30A9B2175756900D05C3D = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +174,8 @@
 				04D30AC02175756900D05C3D /* CourseOnlineTests */,
 				04D30ACB2175756900D05C3D /* CourseOnlineUITests */,
 				04D30AA52175756900D05C3D /* Products */,
+				BA6D7CA9664617A8B9057C40 /* Pods */,
+				2A1D3CCDF47E8DB09E569D09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,11 +192,13 @@
 		04D30AA62175756900D05C3D /* CourseOnline */ = {
 			isa = PBXGroup;
 			children = (
-				04D30AAA2175756900D05C3D /* AppDelegate.h */,
-				04D30AAB2175756900D05C3D /* AppDelegate.m */,
-				04D30AAD2175756900D05C3D /* ViewController.h */,
-				04D30AAE2175756900D05C3D /* ViewController.m */,
-				04D30AB02175756900D05C3D /* Main.storyboard */,
+				04D30ADA217575ED00D05C3D /* main */,
+				04D30ADD217575ED00D05C3D /* headPage */,
+				044D9EFF2181C04A00F28324 /* alert */,
+				0469BDAB21786A6A0016183B /* courseDesign */,
+				0469BDAC21786A6A0016183B /* i */,
+				04D30ADE217575ED00D05C3D /* other */,
+				04D30AF921757F9A00D05C3D /* sdk */,
 				04D30AB32175756900D05C3D /* Assets.xcassets */,
 				04D30AB52175756900D05C3D /* LaunchScreen.storyboard */,
 				04D30AB82175756900D05C3D /* Info.plist */,
@@ -140,6 +233,82 @@
 			path = CourseOnlineUITests;
 			sourceTree = "<group>";
 		};
+		04D30ADA217575ED00D05C3D /* main */ = {
+			isa = PBXGroup;
+			children = (
+				04D30ADB217575ED00D05C3D /* AppDelegate.h */,
+				04D30ADC217575ED00D05C3D /* AppDelegate.m */,
+				04D30AE02175762000D05C3D /* JSRservedTabBarViewController.h */,
+				04D30AE12175762000D05C3D /* JSRservedTabBarViewController.m */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		04D30ADD217575ED00D05C3D /* headPage */ = {
+			isa = PBXGroup;
+			children = (
+				04D30B7E2175CEC900D05C3D /* MainPageBasicViewController.h */,
+				04D30B7F2175CEC900D05C3D /* MainPageBasicViewController.m */,
+				045DA2AD2179823D007CA7D8 /* MainPageSourseViewController.h */,
+				045DA2AE2179823D007CA7D8 /* MainPageSourseViewController.m */,
+				045DA2B32179D3FC007CA7D8 /* MainPageControlViewController.h */,
+				045DA2B42179D3FC007CA7D8 /* MainPageControlViewController.m */,
+				0469BDB3217883D70016183B /* MainPageCourseCollectionViewCell.h */,
+				0469BDB4217883D70016183B /* MainPageCourseCollectionViewCell.m */,
+				045DA2B02179CEBA007CA7D8 /* CourseModel.h */,
+				045DA2B12179CEBA007CA7D8 /* CourseModel.m */,
+				04309AEE217F1A3400CECFD7 /* errorHeader.h */,
+				04309AEF217F1A3400CECFD7 /* errorHeader.m */,
+			);
+			path = headPage;
+			sourceTree = "<group>";
+		};
+		04D30ADE217575ED00D05C3D /* other */ = {
+			isa = PBXGroup;
+			children = (
+				04D30AE32175764300D05C3D /* JSEDefine.h */,
+				045DA2B62179D7CE007CA7D8 /* timerTool.h */,
+				045DA2B72179D7CE007CA7D8 /* timerTool.m */,
+				04D30AE42175764C00D05C3D /* UIView+Frame.h */,
+				04D30AE52175764C00D05C3D /* UIView+Frame.m */,
+				04D30AE72175765300D05C3D /* INetworking.h */,
+				04D30AE82175765300D05C3D /* INetworking.m */,
+				04D30AED2175767400D05C3D /* NSString+Bounding.h */,
+				04D30AEE2175767400D05C3D /* NSString+Bounding.m */,
+				04D30AF02175767C00D05C3D /* NSAttributedString+Extension.h */,
+				04D30AF12175767C00D05C3D /* NSAttributedString+Extension.m */,
+				04D30AF22175767C00D05C3D /* UIColor+niceColorTip.h */,
+				04D30AF32175767C00D05C3D /* UIColor+niceColorTip.m */,
+				04D30AF42175767C00D05C3D /* UIImage+Render.h */,
+				04D30AF52175767C00D05C3D /* UIImage+Render.m */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
+		04D30AF921757F9A00D05C3D /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sdk;
+			sourceTree = "<group>";
+		};
+		2A1D3CCDF47E8DB09E569D09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA35F99E663C124FABC44D1C /* libPods-CourseOnline.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA6D7CA9664617A8B9057C40 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4A0C0E4577E8A2DD9476720 /* Pods-CourseOnline.debug.xcconfig */,
+				20FAD72C931413FE1A69F0B9 /* Pods-CourseOnline.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +316,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04D30AD12175756900D05C3D /* Build configuration list for PBXNativeTarget "CourseOnline" */;
 			buildPhases = (
+				C30037E125537FDB207B2138 /* [CP] Check Pods Manifest.lock */,
 				04D30AA02175756900D05C3D /* Sources */,
 				04D30AA12175756900D05C3D /* Frameworks */,
 				04D30AA22175756900D05C3D /* Resources */,
+				591F1B0FD454AB6BD3E38267 /* [CP] Embed Pods Frameworks */,
+				4B005B0D7BB81B75F0240A09 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,7 +423,6 @@
 			files = (
 				04D30AB72175756900D05C3D /* LaunchScreen.storyboard in Resources */,
 				04D30AB42175756900D05C3D /* Assets.xcassets in Resources */,
-				04D30AB22175756900D05C3D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,13 +442,85 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4B005B0D7BB81B75F0240A09 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CourseOnline/Pods-CourseOnline-resources.sh",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CourseOnline/Pods-CourseOnline-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		591F1B0FD454AB6BD3E38267 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CourseOnline/Pods-CourseOnline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C30037E125537FDB207B2138 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CourseOnline-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04D30AA02175756900D05C3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04D30AAF2175756900D05C3D /* ViewController.m in Sources */,
-				04D30AAC2175756900D05C3D /* AppDelegate.m in Sources */,
+				045DA2AF2179823E007CA7D8 /* MainPageSourseViewController.m in Sources */,
+				04D30AE92175765300D05C3D /* INetworking.m in Sources */,
+				0469BDB5217883D70016183B /* MainPageCourseCollectionViewCell.m in Sources */,
+				0445A0D1218708BC00FC9828 /* SimpleVedioView.m in Sources */,
+				045DA2B22179CEBA007CA7D8 /* CourseModel.m in Sources */,
+				044D9EFE2181BC8D00F28324 /* AlertViewSpecialViewController.m in Sources */,
+				04D30AF82175767C00D05C3D /* UIImage+Render.m in Sources */,
+				04D30B802175CEC900D05C3D /* MainPageBasicViewController.m in Sources */,
+				04D30AEF2175767400D05C3D /* NSString+Bounding.m in Sources */,
+				04D30AE62175764C00D05C3D /* UIView+Frame.m in Sources */,
+				045DA2B82179D7CE007CA7D8 /* timerTool.m in Sources */,
+				0469BDB22178760E0016183B /* UserInfoBasicViewController.m in Sources */,
+				04309AF0217F1A3400CECFD7 /* errorHeader.m in Sources */,
+				042C16EA218840B00056E341 /* UIThrTableView.m in Sources */,
+				04D30AF62175767C00D05C3D /* NSAttributedString+Extension.m in Sources */,
+				0469BDAF2178707E0016183B /* CourseDesignBasicViewController.m in Sources */,
+				04D30AF72175767C00D05C3D /* UIColor+niceColorTip.m in Sources */,
+				04D30ADF217575ED00D05C3D /* AppDelegate.m in Sources */,
+				04D30AE22175762000D05C3D /* JSRservedTabBarViewController.m in Sources */,
+				045DA2B52179D3FC007CA7D8 /* MainPageControlViewController.m in Sources */,
 				04D30AA92175756900D05C3D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,14 +557,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		04D30AB02175756900D05C3D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04D30AB12175756900D05C3D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		04D30AB52175756900D05C3D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -427,6 +662,7 @@
 		};
 		04D30AD22175756900D05C3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4A0C0E4577E8A2DD9476720 /* Pods-CourseOnline.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 65XAATDZ9L;
@@ -434,11 +670,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jingsiedu.CourseOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		04D30AD32175756900D05C3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20FAD72C931413FE1A69F0B9 /* Pods-CourseOnline.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 65XAATDZ9L;
@@ -446,6 +684,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jingsiedu.CourseOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -518,6 +757,7 @@
 				04D30AD32175756900D05C3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04D30AD42175756900D05C3D /* Build configuration list for PBXNativeTarget "CourseOnlineTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +766,7 @@
 				04D30AD62175756900D05C3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04D30AD72175756900D05C3D /* Build configuration list for PBXNativeTarget "CourseOnlineUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +775,7 @@
 				04D30AD92175756900D05C3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
