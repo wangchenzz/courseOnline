@@ -12,6 +12,8 @@
 
 #import "SimpleVedioView.h"
 
+#import "UIThrTableView.h"
+
 #import "JSEDefine.h"
 
 #define cellHeight 50
@@ -45,14 +47,28 @@
 //播放视频的view;
 @property (nonatomic,retain) SimpleVedioView *playerVeidoView;
 
+//补充上view
 @property (nonatomic,retain) UIButton *startVedioButton;
 
 @property (nonatomic,retain) UIImageView *faceImage;
 
 
+//table
+
+@property (nonatomic,retain) UIThrTableView *tTable;
+
 @end
 
 @implementation AlertViewSpecialViewController
+
+
+
+-(void)dealloc{
+    
+    NSLog(@"alter dealloc");
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,7 +105,7 @@
         
         make.centerX.centerY.mas_equalTo(self.view);
         
-        make.size.mas_equalTo(CGSizeMake(self.view.width/2,containHeight ));
+        make.size.mas_equalTo(CGSizeMake(self.view.width/1.7,containHeight ));
         
     }];
 }
@@ -107,7 +123,7 @@
     
     scrollview.bounces = NO;
     
-    scrollview.backgroundColor = [UIColor redColor];
+    scrollview.backgroundColor = [UIColor whiteColor];
     
     [self.containView addSubview:scrollview];
     
@@ -151,6 +167,7 @@
         make.top.left.equalTo(self.scrollView).offset(20);
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
+    self.backButton = closeBtn;
     
     
     //分享button
@@ -163,6 +180,7 @@
         make.right.equalTo(self.scrollView).offset(-20);
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
+    self.shareButton = share;
     
 }
 
@@ -188,7 +206,7 @@
     [otherFunctionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.containView.mas_left).offset(0);
         make.bottom.equalTo(self.containView.mas_bottom).offset(0);
-        make.size.mas_equalTo(CGSizeMake(self.view.width/2, 50));
+        make.size.mas_equalTo(CGSizeMake(self.view.width/1.7, 50));
     }];
     
     UIButton *liuYanBtn =[UIButton buttonWithType:0];
@@ -283,6 +301,7 @@
 //确定按钮.
 -(void)SureClick:(UIButton *)sender{
     
+    
 }
 
 
@@ -291,15 +310,15 @@
 #pragma mark - 顶部隐藏view
 
 -(void)setUpTopHideView{
+    
     UIView *topView = [[UIView alloc] init];
     topView.backgroundColor = JSMainGreenColor;
+    
     [self.containView addSubview:topView];
     self.topHideView = topView;
     
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-
         make.top.left.right.mas_equalTo(self.containView);
-        
         make.height.mas_equalTo(50);
     }];
     
@@ -309,26 +328,20 @@
     [self.topHideView addSubview:sBackButton];
     [sBackButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.topHideView).offset(12);
-        
         make.left.mas_equalTo(self.topHideView).offset(20);
         make.size.mas_equalTo(CGSizeMake(25, 25));
     }];
     
-    
-//    shangjia   shipinbofang
-    
+    //    shangjia   shipinbofang
     UIButton *shanchuan = [UIButton buttonWithType:0];
     [shanchuan setImage:[UIImage imageNamed:@"shangjia"] forState:UIControlStateNormal];
     [shanchuan addTarget:self action:@selector(touchShangjia:) forControlEvents:UIControlEventTouchUpInside];
     [self.topHideView addSubview:shanchuan];
     [shanchuan mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.topHideView).offset(10);
-        
         make.right.mas_equalTo(self.topHideView).offset(-20);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
-    
-    
     
     UIButton *bofang = [UIButton buttonWithType:0];
     [bofang setImage:[UIImage imageNamed:@"shipinbofang"] forState:UIControlStateNormal];
@@ -342,12 +355,15 @@
     }];
     
     self.topHideView.alpha = 0;
-
+    
 }
 
 //点击返回按钮.
 -(void)touchSBack:(UIButton *)sender{
-
+    
+    if ([self.delegate respondsToSelector:@selector(AlertViewSpecialViewControllerDidTouchClose:)]) {
+        [self.delegate AlertViewSpecialViewControllerDidTouchClose:self];
+    }
     
 }
 
@@ -360,7 +376,17 @@
 //点击去往播放页面的按钮.
 -(void)visiBofang:(UIButton *)sender{
     
-    
+    [UIView animateWithDuration:0.6 animations:^{
+       
+        self.scrollView.contentOffset = CGPointMake(0, 0);
+        
+        self.topHideView.alpha = 0;
+        
+        self.backButton.alpha = 1;
+        
+        self.shareButton.alpha = 1;
+        
+    }];
 }
 
 
@@ -375,8 +401,21 @@
 #pragma mark - 创建 视频模块
 -(void)setUpVedioView{
     
-    SimpleVedioView *vedio = [[SimpleVedioView alloc] initWithFrame:CGRectMake(0, 0, self.view.width/2, floor(self.view.width/2 * .75)) andUrl:@"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=130592&resourceType=video&editionType=default&source=aliyun&f=iphone&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&vc=67"];
+//    SimpleVedioView *vedio = [[SimpleVedioView alloc] initWithFrame:CGRectMake(0, 0, self.view.width/1.7, floor(self.view.width/1.7 * .56)) andUrl:@"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=130592&resourceType=video&editionType=default&source=aliyun&f=iphone&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&vc=67"];
     
+
+    
+    
+    NSString *vedio1 = @"http://www.yueqiao.org/mydata/uploadtea/video/test20181102163529.mp4";
+    
+    NSString *vedio2 = @"http://www.yueqiao.org/mydata/uploadtea/video/testvideo.mp4";
+    SimpleVedioView *vedio;
+    if (arc4random() % 2) {
+        vedio = [[SimpleVedioView alloc] initWithFrame:CGRectMake(0, 0, self.view.width/1.7, floor(self.view.width/1.7 * .56)) andUrl:vedio1];
+    }else{
+        
+        vedio = [[SimpleVedioView alloc] initWithFrame:CGRectMake(0, 0, self.view.width/1.7, floor(self.view.width/1.7 * .56)) andUrl:vedio2];
+    }
     [self.scrollView addSubview:vedio];
     
     self.playerVeidoView = vedio;
@@ -411,60 +450,78 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchVedioToPause:)];
     
     [self.playerVeidoView addGestureRecognizer:tap];
+
+    WeakObject(self);
+
+    
+    //视屏结束后, 展开动画 并将 视频时间调到最开始的时候.
+    self.playerVeidoView.endOfVedio = ^{
+      
+        [selfWeak stopVedioAnimation];
+
+        [selfWeak.playerVeidoView changeTimePersent:0];
+    };
     
     self.faceImage = faceImage;
     
     self.startVedioButton = button;
-//先写个;
-    
-
-    
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 1000);
-
 }
 
--(void)touchVedioToPause:(UITapGestureRecognizer *)tap{
 
+//点击水平的暂停手势
+-(void)touchVedioToPause:(UITapGestureRecognizer *)tap{
+    
     
     //如果正在播放就对视屏的播放进行暂停. 对视频数据进行动画效果的操作之后 应该马上对视频进行暂停,而不是在动画结束之后对视屏进行暂停,如果等动画结束之后再暂停,会造成用户需要等待动画的效果.
     if (self.playerVeidoView.player.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
-        
-        
-        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:8 options:UIViewAnimationOptionCurveLinear animations:^{
-            
-            self.startVedioButton.alpha = 1;
-            
-            self.startVedioButton.transform = CGAffineTransformMakeScale(1, 1);
-            
-            [self.playerVeidoView pause];
-        } completion:^(BOOL finished) {
-            
-            
-        }];
+        [self stopVedioAnimation];
     }
+    
+}
+-(void)stopVedioAnimation{
+
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:8 options:UIViewAnimationOptionCurveLinear animations:^{
+        
+        self.startVedioButton.alpha = 1;
+        
+        self.startVedioButton.transform = CGAffineTransformMakeScale(1, 1);
+        
+        [self.playerVeidoView pause];
+    } completion:^(BOOL finished) {
+        
+        
+    }];
+
 
 }
 
 -(void)beganStart:(UIButton *)sender{
     [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:8 options:UIViewAnimationOptionCurveLinear animations:^{
         
-            self.startVedioButton.alpha = 0;
+        self.startVedioButton.alpha = 0;
         
-            self.faceImage.alpha = 0;
+        self.faceImage.alpha = 0;
         
-            self.startVedioButton.transform = CGAffineTransformMakeScale(2.5, 2.5);
+        self.startVedioButton.transform = CGAffineTransformMakeScale(2.5, 2.5);
         
-            [self.playerVeidoView reStart];
+        [self.playerVeidoView reStart];
+        
     } completion:^(BOOL finished) {
-                [self.faceImage removeFromSuperview];
+        
+        [self.faceImage removeFromSuperview];
         
     }];
     
 }
 
-#pragma mark - 创建底部模块.
+#pragma mark - 创建底部tableview模块.
 -(void)setUpTable{
+    //self.view.width/1.7,containHeight
+    UIThrTableView *TTabel = [[UIThrTableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.playerVeidoView.frame), self.view.width/1.7, containHeight - 100)];
+    [self.scrollView addSubview:TTabel];
+    self.tTable = TTabel;
     
+    self.scrollView.contentSize = CGSizeMake(self.containView.width, CGRectGetMaxY(self.tTable.frame));
 }
 
 
@@ -473,42 +530,58 @@
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
     
-//    if (self.playerVeidoView.player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
-
+    //    if (self.playerVeidoView.player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
+    
     //在这里开始视频的播放.
     
-//    }
-
+    //    }
+    
+    
+    
 }
 
 //当滑动时候.
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-
+    
     if (scrollView.contentOffset.y > self.playerVeidoView.height) {
         
         [self touchVedioToPause:nil];
-        
-        
     }
+
+//
     
-
-
+    
+//     0<self.scrollView.contentOffset.y <self.scrollView.bounds.origin.y
+    
+    
+    CGFloat scroYOffset = self.scrollView.contentSize.height - self.scrollView.bounds.size.height - self.scrollView.contentOffset.y;
+    
+//    self.scrollView.bounds.origin.y - self.scrollView.contentOffset.y;
+    
+    //逐渐变为0
+    
+    CGFloat countSize = 150 - scroYOffset;
+    
+    //逐渐变大.
+    if (countSize < 0) {
+        return;
+    }else{
+        CGFloat topViewAlpha = countSize / 150.0;
+        CGFloat otherViewAlpha = 1 - topViewAlpha;
+        self.topHideView.alpha = topViewAlpha;
+        self.shareButton.alpha = otherViewAlpha;
+        self.backButton.alpha = otherViewAlpha;
+    }
 }
 
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-
+    
     NSLog(@"停止滑动");
-
-}
-
-
-
-
--(void)dealloc{
-    
-    NSLog(@"alter dealloc");
     
 }
+
+
+
 
 @end

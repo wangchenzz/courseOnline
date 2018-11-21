@@ -44,7 +44,7 @@
     
     turnView.y = 64;
     
-    turnView.backgroundColor = [UIColor redColor];
+//    turnView.backgroundColor = [UIColor redColor];
     
     self.headTurnView = turnView;
 
@@ -167,7 +167,6 @@
     
 //    NSInteger counts = indexPath.section * 31 + indexPath.row;
 
-    
 //    cucell.model = self.dataInfoArray[counts];
     
 }

@@ -29,6 +29,8 @@
 //          
 @property (nonatomic,assign,readonly) CGFloat duration;
 
+@property (nonatomic,copy) dispatch_block_t endOfVedio;
+
 -(void)pause;
 
 -(void)reStart;

@@ -8,15 +8,12 @@
 //
 
 #import "MainPageControlViewController.h"
+
 #import "MainPageCourseCollectionViewCell.h"
 
 #import "timerTool.h"
 
-#import "SpecialAlertView.h"
-
 #import "errorHeader.h"
-
-#import "AlertViewSpecialViewController.h"
 
 @interface MainPageControlViewController ()
 
@@ -71,9 +68,12 @@
         [self.headTurnView addSubview:imageView];
     }
     
-    self.timer = [NSTimer timerWithTimeInterval:6 target:self selector:@selector(changeImageAnimation) userInfo:nil repeats:YES];
+    //    self.timer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(changeImageAnimation) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(changeImageAnimation) userInfo:nil repeats:YES];
     
-    [[timerTool tool] fireInTheHoll:self.timer];
+    //    [[timerTool tool] fireInTheHoll:self.timer];
+    
+    [self.timer fire];
     
 }
 
@@ -83,14 +83,12 @@
 
 //播放轮播动画.
 -(void)changeImageAnimation{
-    
     CATransition *transition = [CATransition animation];
-    transition.duration = 0.8f;
+    transition.duration = 0.5f;
     transition.type = @"cube";//rippleEffect cude suckEffect oglFlip pageCurl pageUnCurl cameraIrisHollowOpen cameraIrisHollowClose
     transition.subtype = @"fromRight";//type为fade的时候subtype无效
     
     for (UIView *subView in self.headTurnView.subviews) {
-        
         NSInteger index = [self.headTurnView.subviews indexOfObject:subView];
         //        NSInteger maxIndex = self.headTurnView.subviews.count;
         if (index != 0) {
@@ -123,7 +121,7 @@
         imageView.height = self.secondScrollView.height;
         imageView.image = containImage;
         NSInteger count = [self.scrollImageArray indexOfObject:containImage];
-        NSLog(@"%ld",count);
+        //        NSLog(@"%ld",count);
         imageView.x = count * (hCellOffset + imageViewWidth);
         [self.scrollViewContainViewArray addObject:imageView];
         [self.secondScrollView addSubview:imageView];
@@ -207,9 +205,11 @@
 {
     CourseModel *model = self.collectionViewModelArray[indexPath.section];
     
-//    SpecialAlertView *special = [[SpecialAlertView alloc]initWithTitleImage:@"精品课1-img" messageTitle:@"我只是在测试" messageString:@"这是一段测试内容这是一段测试内容这是一段测试内容这是一段测试内容" sureBtnTitle:@"上架" sureBtnColor:[UIColor blueColor]];
-
+    //    SpecialAlertView *special = [[SpecialAlertView alloc]initWithTitleImage:@"精品课1-img" messageTitle:@"我只是在测试" messageString:@"这是一段测试内容这是一段测试内容这是一段测试内容这是一段测试内容" sureBtnTitle:@"上架" sureBtnColor:[UIColor blueColor]];
+    
     AlertViewSpecialViewController *vc = [[AlertViewSpecialViewController alloc] init];
+    
+    vc.delegate = self;
     
     self.alert = vc;
     
@@ -255,4 +255,18 @@
     return reusableview;
 }
 
+#pragma mark - AlertViewSpecialViewControllerDelegate
+
+
+-(void)AlertViewSpecialViewControllerDidTouchClose:(AlertViewSpecialViewController *)vc{
+    
+    [self.alert.view removeFromSuperview];
+    
+    self.alert = nil;
+    
+}
+
 @end
+
+
+

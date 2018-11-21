@@ -10,7 +10,6 @@
 
 @interface errorHeader : UICollectionReusableView
 
-
 @property (nonatomic,retain) UILabel *titleLabel;
 
 @end

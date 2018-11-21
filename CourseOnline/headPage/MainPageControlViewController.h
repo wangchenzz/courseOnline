@@ -7,8 +7,9 @@
 //
 
 #import "MainPageSourseViewController.h"
+#import "AlertViewSpecialViewController.h"
 
-@interface MainPageControlViewController : MainPageSourseViewController<UICollectionViewDelegate,UIScrollViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface MainPageControlViewController : MainPageSourseViewController<UICollectionViewDelegate,UIScrollViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AlertViewSpecialViewControllerDelegate>
 
 @property (nonatomic,retain) NSTimer *timer;
 

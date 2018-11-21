@@ -59,11 +59,8 @@
 -(void)setUpSubviews{
     
 //    self.url = @"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=130592&resourceType=video&editionType=default&source=aliyun&f=iphone&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&vc=67";
-
-    
     
     self.backgroundColor = [UIColor blackColor];
-    
     _width = self.frame.size.width;
     _height = self.frame.size.height;
     
@@ -73,15 +70,17 @@
     AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
     playerLayer.frame = CGRectMake(0, 0, _width, _height);
     //视频填充模式.
-    playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    //AVLayerVideoGravityResize  完全填充
+    
+    //AVLayerVideoGravityResizeAspect  等比例填充，直到一个维度到达区域边界
+    playerLayer.videoGravity = AVLayerVideoGravityResize;
     [self.layer addSublayer:playerLayer];
     //AVPlayer播放完成通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:_player.currentItem];    self.vedioFaceImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _width, _height)];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:_player.currentItem];
+    self.vedioFaceImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _width, _height)];
     _vedioFaceImageView.contentMode = UIViewContentModeCenter;
     [self addSubview:_vedioFaceImageView];
     _vedioFaceImageView.backgroundColor = [UIColor clearColor];
-    
-    
     
     //监控 加载进度.
     [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];// 监听loadedTimeRanges属性
@@ -180,7 +179,7 @@
         
         [_player seekToTime:dragedCMTime completionHandler:^(BOOL finish){
             
-            [_player play];
+//            [_player play];
             
         }];   
     }
@@ -192,8 +191,7 @@
 //视屏播放完成后 通知的方法.
 - (void)moviePlayDidEnd:(id)sender
 {
-    
-    
+    self.endOfVedio();
 }
 
 
@@ -210,8 +208,8 @@
 //    
 //    [_playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     
-    [_player removeObserver:self forKeyPath:@"loadedTimeRanges"];
-    [_player removeObserver:self forKeyPath:@"status"];
+    [_playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
+    [_playerItem removeObserver:self forKeyPath:@"status"];
     
     NSLog(@"移除了视频部分的kvo");
     

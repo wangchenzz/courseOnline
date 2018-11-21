@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CourseDesignBasicViewController : UIViewController
+#define hOffest 22
+
+#define vOffset 22
+
+#define hCellOffset 5
+
+
+@interface CourseDesignBasicViewController : UIViewController<UICollectionViewDelegate,UIScrollViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @end

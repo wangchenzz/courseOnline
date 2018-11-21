@@ -22,6 +22,10 @@ typedef NS_ENUM(NSUInteger,SubscriberType) {
  */
 #define JSStatusRect [[UIApplication sharedApplication] statusBarFrame]
 
+//tabbar
+#define JSTabbarFrame self.tabBarController.tabBar.frame
+
+//导航栏frame
 #define JSNavigationBounds  self.navigationController.navigationBar.frame
 
 #define JSFont(s)  [UIFont systemFontOfSize:(s)]
