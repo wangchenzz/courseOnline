@@ -10,6 +10,8 @@
 		04165F38219567EA00836D54 /* JSProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04165F37219567EA00836D54 /* JSProgressView.m */; };
 		04165F3B21956A6E00836D54 /* ShowMyCourseInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04165F3A21956A6E00836D54 /* ShowMyCourseInfoCollectionViewCell.m */; };
 		04309AF0217F1A3400CECFD7 /* errorHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04309AEF217F1A3400CECFD7 /* errorHeader.m */; };
+		0436E7CB21A6ADC3003CD86C /* ContainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436E7CA21A6ADC3003CD86C /* ContainCollectionViewCell.m */; };
+		0436E7CE21A6AEC4003CD86C /* ContainScrollCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0436E7CD21A6AEC4003CD86C /* ContainScrollCollectionViewCell.m */; };
 		043A2D1421A5471300832F05 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A2CA721A5471300832F05 /* ChangePasswordViewController.m */; };
 		043A2D1521A5471300832F05 /* HomeworkManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A2CA921A5471300832F05 /* HomeworkManageViewController.m */; };
 		043A2D1621A5471300832F05 /* LoginSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A2CAB21A5471300832F05 /* LoginSuccessViewController.m */; };
@@ -143,6 +145,10 @@
 		04165F3A21956A6E00836D54 /* ShowMyCourseInfoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMyCourseInfoCollectionViewCell.m; sourceTree = "<group>"; };
 		04309AEE217F1A3400CECFD7 /* errorHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errorHeader.h; sourceTree = "<group>"; };
 		04309AEF217F1A3400CECFD7 /* errorHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = errorHeader.m; sourceTree = "<group>"; };
+		0436E7C921A6ADC3003CD86C /* ContainCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainCollectionViewCell.h; sourceTree = "<group>"; };
+		0436E7CA21A6ADC3003CD86C /* ContainCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainCollectionViewCell.m; sourceTree = "<group>"; };
+		0436E7CC21A6AEC4003CD86C /* ContainScrollCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainScrollCollectionViewCell.h; sourceTree = "<group>"; };
+		0436E7CD21A6AEC4003CD86C /* ContainScrollCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainScrollCollectionViewCell.m; sourceTree = "<group>"; };
 		043A2CA421A5470800832F05 /* CommonlyUsedHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonlyUsedHeader.h; sourceTree = "<group>"; };
 		043A2CA621A5471300832F05 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		043A2CA721A5471300832F05 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
@@ -767,6 +773,10 @@
 				045DA2B42179D3FC007CA7D8 /* MainPageControlViewController.m */,
 				0469BDB3217883D70016183B /* MainPageCourseCollectionViewCell.h */,
 				0469BDB4217883D70016183B /* MainPageCourseCollectionViewCell.m */,
+				0436E7C921A6ADC3003CD86C /* ContainCollectionViewCell.h */,
+				0436E7CA21A6ADC3003CD86C /* ContainCollectionViewCell.m */,
+				0436E7CC21A6AEC4003CD86C /* ContainScrollCollectionViewCell.h */,
+				0436E7CD21A6AEC4003CD86C /* ContainScrollCollectionViewCell.m */,
 				045DA2B02179CEBA007CA7D8 /* CourseModel.h */,
 				045DA2B12179CEBA007CA7D8 /* CourseModel.m */,
 				04309AEE217F1A3400CECFD7 /* errorHeader.h */,
@@ -1060,6 +1070,7 @@
 				044C3F56218AE28C00FB5A90 /* CourseOutLIneModel.m in Sources */,
 				043A2D3021A5471300832F05 /* SpecialAlertView.m in Sources */,
 				04165F38219567EA00836D54 /* JSProgressView.m in Sources */,
+				0436E7CE21A6AEC4003CD86C /* ContainScrollCollectionViewCell.m in Sources */,
 				043A2D1F21A5471300832F05 /* AddCourseContentViewController.m in Sources */,
 				043A2D7021A54C9E00832F05 /* UIButton+WebCache.m in Sources */,
 				04D30B802175CEC900D05C3D /* MainPageBasicViewController.m in Sources */,
@@ -1115,6 +1126,7 @@
 				043A2D1D21A5471300832F05 /* SetUpIdController.m in Sources */,
 				043A2D3121A5471300832F05 /* StatisticsViewController.m in Sources */,
 				04D30AE22175762000D05C3D /* JSRservedTabBarViewController.m in Sources */,
+				0436E7CB21A6ADC3003CD86C /* ContainCollectionViewCell.m in Sources */,
 				045DA2B52179D3FC007CA7D8 /* MainPageControlViewController.m in Sources */,
 				043A2D1A21A5471300832F05 /* MyMaterialCell.m in Sources */,
 				044C3F55218AE28C00FB5A90 /* CourseOutLineTableViewCell.m in Sources */,

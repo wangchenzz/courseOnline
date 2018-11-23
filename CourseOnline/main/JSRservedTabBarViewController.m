@@ -119,7 +119,7 @@
     [navi.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     
     
-#pragma mark - 这是这次邢增的
+#pragma mark - 这是这次
     
     UIImage *image = [UIImage imageNamed:@"bj"];
     
@@ -131,13 +131,12 @@
 
     [self addChildViewController:navi];
     /*
-     
      */
-    
 }
 
 
 /*
+ 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

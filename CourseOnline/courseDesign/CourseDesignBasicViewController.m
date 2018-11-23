@@ -41,16 +41,17 @@
     [self setUpCollection];
     
     [self letUpData];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    //塔奇克马      flowers for Algernon    特别        特别        特别
+    //塔奇克马        flowers for Algernon        特别        特别        特别        roger
 }
 
 -(void)setUpCollection{
-    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
+    
+    UICollectionViewFlowLayout *flowLayout= [[UICollectionViewFlowLayout alloc] init];
     
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
@@ -59,19 +60,19 @@
     
     self.mainCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(hOffest, CGRectGetMaxY(JSNavigationBounds) + vOffset, self.view.width - hOffest * 2, self.view.height - 2 * vOffset - CGRectGetMaxY(JSNavigationBounds) - CGRectGetHeight(JSTabbarFrame)) collectionViewLayout:flowLayout];
     
-//    [self.mainCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(UIEdgeInsetsMake(vOffset, hOffest, vOffset, hOffest));
-//        make.width.equalTo(@(100));
-//        make.height.equalTo(@(100));
-//        make.center.equalTo(self.view);
-//    }];
+    //    [self.mainCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.edges.mas_equalTo(UIEdgeInsetsMake(vOffset, hOffest, vOffset, hOffest));
+    //        make.width.equalTo(@(100));
+    //        make.height.equalTo(@(100));
+    //        make.center.equalTo(self.view);
+    //    }];
     
     self.mainCollectionView.delegate = self;
     self.mainCollectionView.dataSource = self;
     [self.mainCollectionView setBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
     [self.mainCollectionView registerClass:[ShowMyCourseInfoCollectionViewCell class] forCellWithReuseIdentifier:@"ShowMyCourseInfoCollectionViewCell"];
     
-//        [self.mainCollectionView registerClass:[errorHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView"];
+    //        [self.mainCollectionView registerClass:[errorHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ReusableView"];
     
     [self.view addSubview:self.mainCollectionView];
     
@@ -111,15 +112,12 @@
     [self.mainCollectionView reloadData];
 }
 
-
-
 #pragma mark - collectionDelegate
-
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.dataArray.count;
-
+    
 }
 
 /*禅与摩托车修理艺术  1984 **/
@@ -135,6 +133,7 @@
     ShowMyCourseInfoCollectionViewCell *cell = [ShowMyCourseInfoCollectionViewCell cellForCollectionView:self.mainCollectionView andIndexPath:indexPath];
     return cell;
 }
+
 #pragma mark --UICollectionViewDelegateFlowLayout
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -142,8 +141,8 @@
     CGFloat cellwidth = (self.view.width - hOffest * 2 - hCellOffset * 3 - 15) / 4.0;
     
     return CGSizeMake(cellwidth, cellwidth * .75);
-    
 }
+
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
@@ -175,23 +174,23 @@
 //-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 ////{
 ////    UICollectionReusableView *reusableview = nil;
-////    
+////
 ////    if (kind == UICollectionElementKindSectionHeader){
-////        
+////
 ////                errorHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
-////        
+////
 ////                [headerView.titleLabel setText:@"精品课"];
-////        
+////
 ////                headerView.backgroundColor = [UIColor whiteColor];
-////        
+////
 ////                reusableview = headerView;
-////        
+////
 ////    }else{
-////        
+////
 ////        //  if (kind == UICollectionElementKindSectionFooter){
-////        
+////
 ////    }
-////    
+////
 ////    return nil;
 ////}
 
