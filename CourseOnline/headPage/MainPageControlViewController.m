@@ -11,6 +11,10 @@
 
 #import "MainPageCourseCollectionViewCell.h"
 
+#import "ContainCollectionViewCell.h"
+
+#import "ContainScrollCollectionViewCell.h"
+
 #import "timerTool.h"
 
 #import "errorHeader.h"
@@ -133,6 +137,8 @@
     
     self.secondScrollView.contentSize = CGSizeMake(allWidth, self.secondScrollView.height);
     
+    [self.mainCollectionView reloadData];
+    
 }
 
 
@@ -164,47 +170,76 @@
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.collectionViewModelArray.count;
-    
+    if (section == 0) {
+        return 1;
+    }
+    else if(section ==1){
+        return 1;
+    }else{
+        return self.collectionViewModelArray.count;
+    }
 }
 
 /*禅与摩托车修理艺术  1984 **/
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return 3;
 }
 //每个UICollectionView展示的内容
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 2) {
+        MainPageCourseCollectionViewCell *cell = [MainPageCourseCollectionViewCell cellForCollectionView:self.mainCollectionView andIndexPath:indexPath];
+        
+        
+        return cell;
+    }else if(indexPath.section == 0){
+         ContainCollectionViewCell*cell = [ContainCollectionViewCell cellForCollectionView:self.mainCollectionView andIndexPath:indexPath];
+        [cell.contentView addSubview:self.headTurnView];
+        return cell;
+    }else{
+        ContainScrollCollectionViewCell*cell = [ContainScrollCollectionViewCell cellForCollectionView:self.mainCollectionView andIndexPath:indexPath];
+        [cell.contentView addSubview:self.secondScrollView];
+        return cell;
     
-    MainPageCourseCollectionViewCell *cell = [MainPageCourseCollectionViewCell cellForCollectionView:self.mainCollectionView andIndexPath:indexPath];
-    
-    
-    return cell;
-    
+    }
 }
 #pragma mark --UICollectionViewDelegateFlowLayout
-//定义每个UICollectionView 的大小
+//定义每个UICollectionViewItem 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    CGFloat cellwidth = (self.view.width - hOffest * 2 - hCellOffset * 3 - 15) / 4.0;
+    if (indexPath.section == 2) {
+        CGFloat cellwidth = (self.view.width - hOffest * 2 - hCellOffset * 3 - 15) / 4.0;
+        
+        return CGSizeMake(cellwidth, cellwidth * .9);
+    }else if (indexPath.section == 0){
     
-    return CGSizeMake(cellwidth, cellwidth * .9);
+        return self.headTurnView.bounds.size;
+        
+    }else{
+        CGSize size = self.secondScrollView.bounds.size;
+        size.height = size.height + 20;
+        size.width = size.width + 2 * hOffest;
+        return size;
+    }
 }
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(0, 0, 0, 0);
-    //    UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
+    if (section == 2) {
+//        UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
+        return UIEdgeInsetsMake(0, hOffest, 0, hOffest);
+    }else{
+        return UIEdgeInsetsMake(0, 0, 0, 0);
+    }
 }
 #pragma mark --UICollectionViewDelegate
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CourseModel *model = self.collectionViewModelArray[indexPath.section];
-    
     //    SpecialAlertView *special = [[SpecialAlertView alloc]initWithTitleImage:@"精品课1-img" messageTitle:@"我只是在测试" messageString:@"这是一段测试内容这是一段测试内容这是一段测试内容这是一段测试内容" sureBtnTitle:@"上架" sureBtnColor:[UIColor blueColor]];
     
     AlertViewSpecialViewController *vc = [[AlertViewSpecialViewController alloc] init];
@@ -219,15 +254,27 @@
 //返回这个UICollectionView是否可以被选择
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return NO;
 }
 
 //在这里对每个cell 进行数据填充.
 -(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    MainPageCourseCollectionViewCell *cucell = (MainPageCourseCollectionViewCell*)cell;
-    
-    cucell.model = self.collectionViewModelArray[indexPath.row];
+
+    if (indexPath.section == 2) {
+        MainPageCourseCollectionViewCell *cucell = (MainPageCourseCollectionViewCell*)cell;
+        
+        cucell.model = self.collectionViewModelArray[indexPath.row];
+    }
+
+}
+
+//返回header的尺寸.
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    if (section == 2) {
+        return CGSizeMake(self.view.width, 38);
+    }else{
+        return CGSizeZero;
+    }
 }
 
 
@@ -238,14 +285,21 @@
     UICollectionReusableView *reusableview = nil;
     
     if (kind == UICollectionElementKindSectionHeader){
-        
         errorHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
-        
-        [headerView.titleLabel setText:@"精品课"];
-        
-        headerView.backgroundColor = [UIColor whiteColor];
-        
-        reusableview = headerView;
+        if (indexPath.section == 2) {
+            errorHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"ReusableView" forIndexPath:indexPath];
+            
+            [headerView.titleLabel setText:@"精品课"];
+            
+            NSLog(@"wodenaokene");
+            
+            headerView.backgroundColor = [UIColor whiteColor];
+            
+            reusableview = headerView;
+        }else{
+            reusableview = headerView;
+            
+        }
     }else{
         
         //  if (kind == UICollectionElementKindSectionFooter){

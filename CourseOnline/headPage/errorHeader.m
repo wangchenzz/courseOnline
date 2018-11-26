@@ -23,9 +23,9 @@
         
         self.titleLabel.height = 38;
         
-        self.titleLabel.x = 0;
+        self.titleLabel.x = 18;
         
-        self.titleLabel.centerY = self.centerY;
+        self.titleLabel.y = 0;
         
         [self setBackgroundColor:JSLikeBlackColor];
         
@@ -38,6 +38,5 @@
     }
     return self;
 }
-
 
 @end
