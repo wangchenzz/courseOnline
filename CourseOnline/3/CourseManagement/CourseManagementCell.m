@@ -33,6 +33,10 @@
         _topImage.clipsToBounds=YES;
         [_functionView addSubview:_topImage];
         
+        _stateImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        _stateImage.clipsToBounds=YES;
+        [_functionView addSubview:_stateImage];
+        
         _botlabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 185, self.contentView.frame.size.width-20, 30)];
         _botlabel.textAlignment = NSTextAlignmentLeft;
         _botlabel.textColor = [UIColor blackColor];

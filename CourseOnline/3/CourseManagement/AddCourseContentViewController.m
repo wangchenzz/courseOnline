@@ -18,7 +18,7 @@
 @property (nonatomic,strong)UICollectionView *collectionView;
 @property (nonatomic,strong)UIView *noDataView;
 @property (assign, nonatomic) CBPopupViewAligment popAligment;
-@property (nonatomic,strong) UIView *footView;
+@property (nonatomic,strong) UICollectionReusableView *footView;
 
 @end
 
@@ -26,6 +26,7 @@
 
 static NSString *const cellId = @"cellId";
 static NSString *const footerId = @"footerId";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -151,14 +152,14 @@ static NSString *const footerId = @"footerId";
     UICollectionReusableView *supplementaryView;
     
     if ([kind isEqualToString:UICollectionElementKindSectionFooter]){
-       self.footView = (UIView *)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId forIndexPath:indexPath];
+       self.footView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId forIndexPath:indexPath];
         self.footView .backgroundColor =[UIColor clearColor];
         
         UIView *footerView =[[UIView alloc]initWithFrame:CGRectMake(0, 10, KScreenWidth, 50)];
         footerView.backgroundColor =ALLHeaderViewColor;
         [_footView addSubview:footerView];
         
-        NSArray *imageAry =@[@"shitianbai",@"shanchubai",@"bianjibai"];
+        NSArray *imageAry =@[@"shitian",@"shanchu",@"bianji"];
         
         for (int i=0; i<3; i++) {
             UIButton *btn =[UIButton buttonWithType:0];

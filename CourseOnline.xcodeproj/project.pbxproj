@@ -893,7 +893,7 @@
 				TargetAttributes = {
 					04D30AA32175756900D05C3D = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 65XAATDZ9L;
+						DevelopmentTeam = QTNV227737;
 						ProvisioningStyle = Automatic;
 					};
 					04D30ABC2175756900D05C3D = {
@@ -1267,8 +1267,9 @@
 			baseConfigurationReference = D4A0C0E4577E8A2DD9476720 /* Pods-CourseOnline.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 65XAATDZ9L;
+				DEVELOPMENT_TEAM = QTNV227737;
 				INFOPLIST_FILE = CourseOnline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jingsiedu.CourseOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1281,8 +1282,9 @@
 			baseConfigurationReference = 20FAD72C931413FE1A69F0B9 /* Pods-CourseOnline.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 65XAATDZ9L;
+				DEVELOPMENT_TEAM = QTNV227737;
 				INFOPLIST_FILE = CourseOnline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jingsiedu.CourseOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";

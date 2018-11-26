@@ -14,12 +14,18 @@
 @interface StatisticsViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong)UICollectionView *collectionView;
+@property (nonatomic,strong) UICollectionReusableView *footView;
 
 @end
 
 @implementation StatisticsViewController
 
 static NSString *const cellId = @"cellId";
+static NSString *const footerId = @"footerId";
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.tabBarController.tabBar.hidden = YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,6 +64,7 @@ static NSString *const cellId = @"cellId";
     
     // 注册cell、sectionHeader、sectionFooter
     [_collectionView registerClass:[LessonPeriodCell class] forCellWithReuseIdentifier:cellId];
+    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
 
 }
 
@@ -100,6 +107,57 @@ static NSString *const cellId = @"cellId";
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(10, 10, 0, 10);
+}
+
+
+//显示header和footer的回调方法
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionReusableView *supplementaryView;
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter]){
+        self.footView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId forIndexPath:indexPath];
+        self.footView .backgroundColor =[UIColor clearColor];
+        
+        UIView *footerView =[[UIView alloc]initWithFrame:CGRectMake(0, 10, KScreenWidth, 50)];
+        footerView.backgroundColor =ALLHeaderViewColor;
+        [_footView addSubview:footerView];
+        
+        NSArray *imageAry =@[@"shitian",@"shanchu",@"shangjia"];
+        
+        for (int i=0; i<3; i++) {
+            UIButton *btn =[UIButton buttonWithType:0];
+            btn.backgroundColor =[UIColor redColor];
+            [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",imageAry[i]]] forState:UIControlStateNormal];
+            btn.tag =30+i;
+            [btn addTarget:self action:@selector(editBtn:) forControlEvents:UIControlEventTouchDown];
+            btn.frame =CGRectMake(20+(50*i), 10, 30, 30);
+//            btn.frame =CGRectMake(0, 10, 30, 30);
+            [footerView addSubview:btn];
+        }
+        
+        UIButton *finishBtn =[UIButton buttonWithType:0];
+        [finishBtn setTitle:@"完成" forState:UIControlStateNormal];
+        [finishBtn addTarget:self action:@selector(finishBtn:) forControlEvents:UIControlEventTouchDown];
+        finishBtn.frame =CGRectMake(KScreenWidth-80, 10, 70, 30);
+        [footerView addSubview:finishBtn];
+        
+        self.footView.hidden =YES;
+        
+        supplementaryView = self.footView ;
+        
+    }
+    
+    return supplementaryView;
+}
+
+-(void)editBtn:(UIButton *)sender{
+    
+}
+
+-(void)finishBtn:(UIButton *)sender{
+    
+    self.footView.hidden =YES;
 }
 
 #pragma mark --UICollectionViewDelegate

@@ -32,6 +32,10 @@ static NSString *const footerId = @"footerId";
 static NSTimeInterval kAnimationDuration = 0.3;
 
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.title =@"课程管理";
@@ -338,7 +342,7 @@ static NSTimeInterval kAnimationDuration = 0.3;
         }];
         
         UIImageView *bianJiImage =[UIImageView new];
-        bianJiImage.image =[UIImage imageNamed:@"bianji"];
+        bianJiImage.image =[UIImage imageNamed:@"编辑"];
         [bianJiView addSubview:bianJiImage];
         [bianJiImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(bianJiView.mas_top).offset(15);
@@ -439,5 +443,9 @@ static NSTimeInterval kAnimationDuration = 0.3;
     }];
    
 }
+
+//-(void)viewWillAppear:(BOOL)animated{
+//    self.tabBarController.tabBar.hidden =YES;
+//}
 
 @end

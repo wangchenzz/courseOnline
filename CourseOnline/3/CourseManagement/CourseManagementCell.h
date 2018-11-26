@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UILabel *momeylabel;
 @property (strong, nonatomic) UILabel *datelabel;
 
+@property (strong, nonatomic) UIImageView *stateImage;
+
 
 @end
 

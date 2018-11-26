@@ -14,6 +14,10 @@
 
 @implementation OrderManageViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"订单管理";

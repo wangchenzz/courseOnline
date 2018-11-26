@@ -17,6 +17,10 @@
 
 @implementation MyMaterialViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 static NSString *const cellId = @"cellId";
 static NSTimeInterval kAnimationDuration = 0.3;
 
@@ -159,7 +163,7 @@ static NSTimeInterval kAnimationDuration = 0.3;
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     MyMaterialCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    cell.topImage.image = [UIImage imageNamed:@"图片2"];
+    cell.topImage.image = [UIImage imageNamed:@"图片3"];
     cell.botlabel.text =[NSString stringWithFormat:@"课程名称课程名称课程名称-%ld",(long)indexPath.row];
     cell.momeylabel.text =@"￥1222.00";
     cell.datelabel.text =@"2018/10/15 00:00";

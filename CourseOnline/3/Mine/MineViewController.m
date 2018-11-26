@@ -36,6 +36,14 @@
     self.view.backgroundColor =[UIColor redColor];
     
     self.tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight) style:UITableViewStylePlain];
+    
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
+    
     self.tableView.delegate =self;
     self.tableView.dataSource =self;
     [self.view addSubview:self.tableView];
@@ -99,8 +107,11 @@
 //        make.centerY.equalTo(headView).offset(20);
 //        make.size.mas_equalTo(CGSizeMake(200, 40));
 //    }];
-    
+//    [self.view addSubview:headView];
     self.tableView.tableHeaderView =headView;
+    
+    UIView *footView =[UIView new];
+    self.tableView.tableFooterView =footView;
 }
 
 -(void)login:(UIButton *)sender{
@@ -112,7 +123,6 @@
         loginVC.view.layer.masksToBounds = YES;
     }else
     {
-//    self.popAligment =CBPopupViewAligmentBottom;
         loginVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
     }
     [self cb_presentPopupViewController:loginVC animationType:1 aligment:self.popAligment dismissed:nil];
@@ -140,15 +150,18 @@
     cell.textLabel.font =[UIFont systemFontOfSize:25];
     cell.imageView.image =[UIImage imageNamed:@"菱形"];
     return cell;
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 300;
+    return 0.1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
 }
+
+
 
 -(void)setUpId{
     SetUpIdController *setUpVC =[SetUpIdController new];
@@ -180,6 +193,11 @@
         [self.navigationController pushViewController:orderManageVC animated:YES];
     }
     
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = YES; 
 }
 
 @end

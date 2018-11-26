@@ -51,6 +51,10 @@
 
 @implementation AddCourseViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.tabBarController.tabBar.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"课程信息";

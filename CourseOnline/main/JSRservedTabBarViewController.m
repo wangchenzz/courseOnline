@@ -18,6 +18,10 @@
 
 #import "UserInfoBasicViewController.h"
 
+#import "MineViewController.h"
+
+#import "CourseManagementController.h"
+
 @interface JSRservedTabBarViewController ()
 
 @end
@@ -42,10 +46,13 @@
     [self addJSChildViewController:course withNormalImage:@"1" selectImage:@"1" title:@"精品课"];
 
     
-    CourseDesignBasicViewController *design = [[CourseDesignBasicViewController alloc] init];
-    [self addJSChildViewController:design withNormalImage:@"2" selectImage:@"2" title:@"我的学习"];
+//    CourseDesignBasicViewController *design = [[CourseDesignBasicViewController alloc] init];
+//    [self addJSChildViewController:design withNormalImage:@"2" selectImage:@"2" title:@"我的学习"];
     
-    UserInfoBasicViewController *userInfo = [[UserInfoBasicViewController alloc] init];
+    CourseManagementController *design = [[CourseManagementController alloc] init];
+    [self addJSChildViewController:design withNormalImage:@"2" selectImage:@"2" title:@"课程管理"];
+    
+    MineViewController *userInfo = [[MineViewController alloc] init];
     [self addJSChildViewController:userInfo withNormalImage:@"3" selectImage:@"3" title:@"我"];
     /*
      for (UITabBarItem *item in self.tabBar.items) {
@@ -72,14 +79,14 @@
     
     NSMutableDictionary *normalAttri = [NSMutableDictionary dictionary];
     
-    normalAttri[NSFontAttributeName] = JSFont(12);
+    normalAttri[NSFontAttributeName] = JSFont(13);
     
     normalAttri[NSForegroundColorAttributeName] = JSColor(155, 155, 155, 1);
     
     //设置选中状态下的tabbaritem的字体；
     NSMutableDictionary *selectAttri = [NSMutableDictionary dictionary];
     
-    selectAttri[NSFontAttributeName] = JSFont(12);
+    selectAttri[NSFontAttributeName] = JSFont(13);
     
     selectAttri[NSForegroundColorAttributeName] = JSColor(0, 177, 73, 1);
     

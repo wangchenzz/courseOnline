@@ -72,6 +72,10 @@ typedef NS_ENUM(NSUInteger,RichTextType) {
 static NSString *const cellId = @"cellId";
 static NSString *const footerId = @"footerId";
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.tabBarController.tabBar.hidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

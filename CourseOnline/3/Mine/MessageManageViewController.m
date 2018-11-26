@@ -14,6 +14,10 @@
 
 @implementation MessageManageViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"消息管理";
