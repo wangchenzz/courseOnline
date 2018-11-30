@@ -19,6 +19,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.tabBarController.tabBar.hidden = YES;
 }
 
 static NSString *const cellId = @"cellId";

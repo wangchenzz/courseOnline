@@ -33,7 +33,7 @@
         _topImage.clipsToBounds=YES;
         [_functionView addSubview:_topImage];
         
-        _stateImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        _stateImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
         _stateImage.clipsToBounds=YES;
         [_functionView addSubview:_stateImage];
         

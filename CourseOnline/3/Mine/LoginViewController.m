@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import "UIButton+CountDown.h"
 #import "LoginSuccessViewController.h"
+#import "INetworking.h"
 
 @interface LoginViewController ()
 
@@ -117,6 +118,7 @@
     [self.verificationView addSubview:verificationBtn];
     
     
+    
     self.passwordView =[UIView new];
     self.passwordView.hidden =YES;
     self.passwordView.backgroundColor =[UIColor whiteColor];
@@ -178,23 +180,53 @@
 - (void)countDownBtnAction:(UIButton *)button{
     
     [button startWithTime:5 title:@"点击重新获取" countDownTitle:@"秒" mainColor:ALLHeaderViewColor countColor:ALLHeaderViewColor];
+
+    
+    INetworking *net =[INetworking shareNet];
+    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+    dic[@"phone"] =self.phoneTextField.text;
+    [net GET:@"http://120.55.241.58:8082/app/verificationCode.json" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
+        if (isSuccess) {
+            NSLog(@"成功");
+        }
+        NSDictionary *dict = (NSDictionary *)returnObject;
+        NSLog(@"msg--%@---",dict);
+    }];
     
 }
 
 -(void)login:(UIButton *)sender{
-    LoginSuccessViewController *successVC =[LoginSuccessViewController new];
-    successVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
-    if (self.popAligment == CBPopupViewAligmentCenter) {
-        successVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
-        successVC.view.layer.cornerRadius = 10.0;
-        successVC.view.layer.masksToBounds = YES;
-    }else
-    {
-        successVC.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 250);
-    }
-    [self handleView];
-    [self cb_presentPopupViewController:successVC animationType:1 aligment:self.popAligment dismissed:nil];
-    NSLog(@"手机号码是--%@,验证码是--%@",self.phoneTextField.text,self.verificationTextField.text);
+    
+    INetworking *net =[INetworking shareNet];
+    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+    dic[@"phone"] =self.phoneTextField.text;
+    dic[@"verificationCode"]=self.verificationTextField.text;
+//    NSLog(@"t---%@",dic);
+    [net GET:@"http://120.55.241.58:8082/app/toLoginByVerificationCode.json" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
+        if (isSuccess) {
+//            NSLog(@"成功");
+            LoginSuccessViewController *successVC =[LoginSuccessViewController new];
+            successVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
+            if (self.popAligment == CBPopupViewAligmentCenter) {
+                successVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
+                successVC.view.layer.cornerRadius = 10.0;
+                successVC.view.layer.masksToBounds = YES;
+            }else
+            {
+                successVC.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 250);
+            }
+            [self handleView];
+            [self cb_presentPopupViewController:successVC animationType:1 aligment:self.popAligment dismissed:nil];
+            
+            NSDictionary *dict = (NSDictionary *)returnObject;
+            NSLog(@"token--%@---",dict[@"token"]);
+        }else{
+            NSLog(@"失败");
+        }
+    }];
+    
+    
+//    NSLog(@"手机号码是--%@,验证码是--%@",self.phoneTextField.text,self.verificationTextField.text);
 
 }
 

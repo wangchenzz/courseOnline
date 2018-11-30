@@ -24,6 +24,8 @@
 
 @property (nonatomic,strong) UIScrollView *addScrollview;
 
+@property (nonatomic,strong) UIImageView *fengMianView;
+
 @property (nonatomic,strong) UITextView *textView;
 @property (nonatomic,assign) RichTextType textType;
 @property (strong, nonatomic) UIButton *fontBtn;
@@ -226,10 +228,10 @@
         make.size.mas_equalTo(CGSizeMake(80, 40));
     }];
     
-    UIImageView *fengMianView =[UIImageView new];
-    fengMianView.image =[UIImage imageNamed:@"封面图"];
-    [_addScrollview addSubview:fengMianView];
-    [fengMianView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _fengMianView =[UIImageView new];
+    _fengMianView.image =[UIImage imageNamed:@"封面图"];
+    [_addScrollview addSubview:_fengMianView];
+    [_fengMianView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(maiDianChoose.mas_bottom).offset(20);
         make.left.equalTo(fengMianTu.mas_right).offset(10);
         make.size.mas_equalTo(CGSizeMake(200, 169));
@@ -238,11 +240,12 @@
     UIButton *fengMianBtn =[UIButton buttonWithType:0];
     fengMianBtn.backgroundColor =ssRGBAlpha(28, 184, 107, 1);
     [fengMianBtn setTitle:@"上传图片" forState:UIControlStateNormal];
+    [fengMianBtn addTarget:self action:@selector(addImage) forControlEvents:UIControlEventTouchDown];
     fengMianBtn.layer.cornerRadius =5;
     [_addScrollview addSubview:fengMianBtn];
     [fengMianBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(fengMianView.mas_right).offset(20);
-        make.centerY.equalTo(fengMianView);
+        make.left.equalTo(_fengMianView.mas_right).offset(20);
+        make.centerY.equalTo(_fengMianView);
         make.size.mas_equalTo(CGSizeMake(150, 40));
     }];
     
@@ -254,7 +257,7 @@
     [_addScrollview addSubview:tuPianYaoQiu];
     [tuPianYaoQiu mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(fengMianBtn.mas_bottom).offset(10);
-        make.left.equalTo(fengMianView.mas_right).offset(20);
+        make.left.equalTo(_fengMianView.mas_right).offset(20);
         make.size.mas_equalTo(CGSizeMake(250, 60));
     }];
     
@@ -266,7 +269,7 @@
     biTian_2.textColor =[UIColor orangeColor];
     [_addScrollview addSubview:biTian_2];
     [biTian_2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(fengMianView.mas_bottom).offset(35);
+        make.top.equalTo(_fengMianView.mas_bottom).offset(35);
         make.left.equalTo(_addScrollview.mas_left).offset(200);
         make.size.mas_equalTo(CGSizeMake(20, 20));
     }];
@@ -275,7 +278,7 @@
     lingYu.text =@"教学领域:";
     [_addScrollview addSubview:lingYu];
     [lingYu mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(fengMianView.mas_bottom).offset(20);
+        make.top.equalTo(_fengMianView.mas_bottom).offset(20);
         make.left.equalTo(_addScrollview.mas_left).offset(220);
         make.size.mas_equalTo(CGSizeMake(80, 40));
     }];
@@ -293,7 +296,7 @@
     fenLei_1.imageRect = CGRectMake(125, 14, 15, 15);
     [_addScrollview addSubview:fenLei_1];
     [fenLei_1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(fengMianView.mas_bottom).offset(20);
+        make.top.equalTo(_fengMianView.mas_bottom).offset(20);
         make.left.equalTo(lingYu.mas_right).offset(10);
         make.size.mas_equalTo(CGSizeMake(150, 40));
     }];
@@ -311,7 +314,7 @@
     fenLei_2.imageRect = CGRectMake(125, 14, 15, 15);
     [_addScrollview addSubview:fenLei_2];
     [fenLei_2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(fengMianView.mas_bottom).offset(20);
+        make.top.equalTo(_fengMianView.mas_bottom).offset(20);
         make.left.equalTo(fenLei_1.mas_right).offset(30);
         make.size.mas_equalTo(CGSizeMake(150, 40));
     }];
@@ -329,7 +332,7 @@
     fenLei_3.imageRect = CGRectMake(125, 14, 15, 15);
     [_addScrollview addSubview:fenLei_3];
     [fenLei_3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(fengMianView.mas_bottom).offset(20);
+        make.top.equalTo(_fengMianView.mas_bottom).offset(20);
         make.left.equalTo(fenLei_2.mas_right).offset(30);
         make.size.mas_equalTo(CGSizeMake(150, 40));
     }];
@@ -645,6 +648,18 @@
     }];
 }
 
+-(void)addImage{
+    [self selectedImage];
+}
+
+//PickerImage完成后的代理方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    //定义一个newPhoto，用来存放我们选择的图片。
+    UIImage *newPhoto = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+    _fengMianView.image = newPhoto;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark --课程介绍编辑文本
 -(void)CommomInit
 {
@@ -699,8 +714,6 @@
         
         [_textView.textStorage addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:self.font] range:wholeRange];
     }
-    
-    
     
 }
 
@@ -984,7 +997,6 @@
         return;
     }
     
-    
     CGFloat ImgeHeight=image.size.height*IMAGE_MAX_SIZE/image.size.width;
     if (ImgeHeight>IMAGE_MAX_SIZE*2) {
         ImgeHeight=IMAGE_MAX_SIZE*2;
@@ -1140,7 +1152,9 @@
     
     imagePickerController.sourceType = sourceType;
     
-    [self presentViewController:imagePickerController animated:YES completion:^{}];
+    [self presentViewController:imagePickerController animated:YES completion:^{
+        
+    }];
 }
 
 - (void)dealloc {

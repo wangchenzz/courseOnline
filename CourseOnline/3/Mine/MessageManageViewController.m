@@ -16,12 +16,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"消息管理";
-    self.view.backgroundColor =[UIColor whiteColor];
+    self.view.backgroundColor =[UIColor yellowColor];
     
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 40, 30)];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchDown];

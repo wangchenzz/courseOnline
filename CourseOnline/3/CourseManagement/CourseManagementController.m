@@ -233,6 +233,7 @@ static NSTimeInterval kAnimationDuration = 0.3;
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CourseManagementCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     cell.topImage.image = [UIImage imageNamed:@"图片2"];
+    cell.stateImage.image =[UIImage imageNamed:@"caogao"];
     cell.botlabel.text =[NSString stringWithFormat:@"课程名称课程名称课程名称-%ld",(long)indexPath.row];
     cell.momeylabel.text =@"￥1222.00";
     cell.datelabel.text =@"2018/10/15 00:00";
