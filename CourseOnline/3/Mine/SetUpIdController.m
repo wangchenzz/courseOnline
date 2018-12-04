@@ -19,6 +19,9 @@
 
 @property (assign, nonatomic) CBPopupViewAligment popAligment;
 
+@property (nonatomic,strong) UIButton *exitBtn;
+@property (nonatomic,strong) UIButton *finBtn;
+
 @end
 
 @implementation SetUpIdController
@@ -28,6 +31,10 @@
     self.backgroundView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150)];
     self.backgroundView.backgroundColor =[UIColor clearColor];
     [self.view addSubview:self.backgroundView];
+    
+   
+    
+    
     [self addHeadView];
     // Do any additional setup after loading the view.
 }
@@ -133,17 +140,38 @@
         }];
     }
     
-    UIButton *exitBtn =[UIButton buttonWithType:0];
-    [exitBtn setTitle:@"退出" forState:UIControlStateNormal];
-    exitBtn.backgroundColor =ALLHeaderViewColor;
-    [exitBtn addTarget:self action:@selector(backHome:) forControlEvents:UIControlEventTouchDown];
-    exitBtn.layer.cornerRadius =20;
-    [self.backgroundView addSubview:exitBtn];
-    [exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.exitBtn =[UIButton buttonWithType:0];
+    [self.exitBtn setTitle:@"退出" forState:UIControlStateNormal];
+    self.exitBtn.backgroundColor =ALLHeaderViewColor;
+    [self.exitBtn addTarget:self action:@selector(backHome:) forControlEvents:UIControlEventTouchDown];
+    self.exitBtn.layer.cornerRadius =20;
+    [self.backgroundView addSubview:self.exitBtn];
+    [self.exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.backgroundView.mas_bottom).offset(-80);
         make.centerX.equalTo(self.backgroundView);
         make.size.mas_equalTo(CGSizeMake(self.backgroundView.frame.size.width-200, 50));
     }];
+    
+    
+    self.finBtn =[UIButton buttonWithType:0];
+    [self.finBtn setTitle:@"完成" forState:UIControlStateNormal];
+    self.finBtn.backgroundColor =ALLHeaderViewColor;
+    [self.finBtn addTarget:self action:@selector(backHome:) forControlEvents:UIControlEventTouchDown];
+    self.finBtn.layer.cornerRadius =20;
+    [self.backgroundView addSubview:self.finBtn];
+    [self.finBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.backgroundView.mas_bottom).offset(-80);
+        make.centerX.equalTo(self.backgroundView);
+        make.size.mas_equalTo(CGSizeMake(self.backgroundView.frame.size.width-200, 50));
+    }];
+    
+    if ([self.type isEqualToString:@"login"]) {
+        self.exitBtn.hidden =YES;
+        self.finBtn.hidden =NO;
+    }else{
+        self.exitBtn.hidden =NO;
+        self.finBtn.hidden =YES;
+    }
     
 }
 
@@ -214,8 +242,19 @@
     [self cb_dismissPopupViewControllerToRootAnimated:YES];
     
 }
--(void)backHome:(UIButton *)sender{
 
+-(void)returnIsExit:(ReturnIsExit)block{
+    self.returnIsExit =block;
+}
+
+-(void)backHome:(UIButton *)sender{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:@"token"];
+    
+    if (self.returnIsExit !=nil) {
+        self.returnIsExit(YES);
+    }
+    
     [self cb_dismissPopupViewControllerToRootAnimated:YES];
 }
 

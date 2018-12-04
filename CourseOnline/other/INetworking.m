@@ -115,8 +115,13 @@ NSString * const loginUrlStr = @"http://www.yueqiao.org/web/app/login.json";
 
     session.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/html",@"text/json", @"text/javascript", nil];
     
-    [session GET:URLString parameters:parmers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        myblok(responseObject,YES);
+    NSString *url =[NSString stringWithFormat:@"%@%@.json",SERVISEURL,URLString];
+    
+    [session GET:url parameters:parmers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        
+        myblok(dict,YES);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
          myblok(error,NO);
     }];

@@ -26,5 +26,7 @@
 #define MaxLength (2000)
 #define RICHTEXT_IMAGE (@"[UIImageView]")
 
+#define SERVISEURL @"http://120.55.241.58:8082/app/"
+
 
 #endif /* CommonlyUsedHeader_h */

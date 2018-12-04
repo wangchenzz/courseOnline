@@ -25,6 +25,9 @@
 @property (nonatomic,strong) UITextField *phoneTextField;
 @property (nonatomic,strong) UITextField *passwordViewTextField;
 
+@property (nonatomic,strong) UIButton *passwordLoginBtn;
+@property (assign) BOOL isPassword;
+
 @end
 
 @implementation LoginViewController
@@ -34,8 +37,16 @@
     self.backgroundView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150)];
     self.backgroundView.backgroundColor =[UIColor clearColor];
     [self.view addSubview:self.backgroundView];
+    
+    _isPassword =NO;
+    
+    
     [self addHeadView];
     // Do any additional setup after loading the view.
+}
+
+-(void)returnTokenStr:(ReturnTokenStr)block{
+    self.returnTokenStr = block;
 }
 
 -(void)addHeadView{
@@ -164,12 +175,12 @@
         make.size.mas_equalTo(CGSizeMake(250, 30));
     }];
     
-    UIButton *passwordLoginBtn =[UIButton buttonWithType:0];
-    [passwordLoginBtn setTitle:@"密码登录" forState:UIControlStateNormal];
-    [passwordLoginBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [passwordLoginBtn addTarget:self action:@selector(passwordLogin:) forControlEvents:UIControlEventTouchDown];
-    [self.backgroundView addSubview:passwordLoginBtn];
-    [passwordLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    _passwordLoginBtn =[UIButton buttonWithType:0];
+    [_passwordLoginBtn setTitle:@"密码登录" forState:UIControlStateNormal];
+    [_passwordLoginBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_passwordLoginBtn addTarget:self action:@selector(passwordLogin:) forControlEvents:UIControlEventTouchDown];
+    [self.backgroundView addSubview:_passwordLoginBtn];
+    [_passwordLoginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(loginBtn.mas_bottom).offset(10);
         make.right.equalTo(loginBtn.mas_right);
         make.size.mas_equalTo(CGSizeMake(100, 30));
@@ -179,54 +190,124 @@
 
 - (void)countDownBtnAction:(UIButton *)button{
     
-    [button startWithTime:5 title:@"点击重新获取" countDownTitle:@"秒" mainColor:ALLHeaderViewColor countColor:ALLHeaderViewColor];
-
     
-    INetworking *net =[INetworking shareNet];
-    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
-    dic[@"phone"] =self.phoneTextField.text;
-    [net GET:@"http://120.55.241.58:8082/app/verificationCode.json" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
-        if (isSuccess) {
-            NSLog(@"成功");
-        }
-        NSDictionary *dict = (NSDictionary *)returnObject;
-        NSLog(@"msg--%@---",dict);
-    }];
+    if (self.phoneTextField.text.length<11) {
+
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"请输入正确手机号码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        
+    }else{
+        
+        INetworking *net =[INetworking shareNet];
+        NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+        dic[@"phone"] =self.phoneTextField.text;
+        [net GET:@"verificationCode" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
+            
+            [button startWithTime:10 title:@"点击重新获取" countDownTitle:@"秒" mainColor:ALLHeaderViewColor countColor:ALLHeaderViewColor];
+            
+            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@",returnObject[@"msg"]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertView show];
+            
+
+        }];
+    }
+    
     
 }
 
 -(void)login:(UIButton *)sender{
     
+    
+    
     INetworking *net =[INetworking shareNet];
-    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
-    dic[@"phone"] =self.phoneTextField.text;
-    dic[@"verificationCode"]=self.verificationTextField.text;
-//    NSLog(@"t---%@",dic);
-    [net GET:@"http://120.55.241.58:8082/app/toLoginByVerificationCode.json" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
-        if (isSuccess) {
-//            NSLog(@"成功");
-            LoginSuccessViewController *successVC =[LoginSuccessViewController new];
-            successVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
-            if (self.popAligment == CBPopupViewAligmentCenter) {
-                successVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
-                successVC.view.layer.cornerRadius = 10.0;
-                successVC.view.layer.masksToBounds = YES;
-            }else
-            {
-                successVC.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 250);
+    NSMutableDictionary *dic1 =[NSMutableDictionary dictionary];
+    dic1[@"phone"] =self.phoneTextField.text;
+    dic1[@"verificationCode"]=self.verificationTextField.text;
+    NSMutableDictionary *dic2 =[NSMutableDictionary dictionary];
+    dic2[@"account"]=self.phoneTextField.text;
+    dic2[@"password"]=self.passwordViewTextField.text;
+    
+    NSLog(@"phone-%@,ver-%@,dic1-%@",self.phoneTextField.text,self.verificationTextField.text,dic1);
+    
+    if (_isPassword ==YES) {
+//        NSLog(@"密码登陆");
+        [net GET:@"toLoginByPassword" withParmers:dic2 do:^(id returnObject, BOOL isSuccess) {
+            if ([returnObject[@"msg"] isEqualToString:@"1"]) {
+                LoginSuccessViewController *successVC =[LoginSuccessViewController new];
+                successVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
+                if (self.popAligment == CBPopupViewAligmentCenter) {
+                    successVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
+                    successVC.view.layer.cornerRadius = 10.0;
+                    successVC.view.layer.masksToBounds = YES;
+                }else
+                {
+                    successVC.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 250);
+                }
+                [self handleView];
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:returnObject[@"token"] forKey:@"token"];
+                [userDefaults synchronize];
+                
+                if (self.returnTokenStr != nil) {
+                    self.returnTokenStr([NSString stringWithFormat:@"%@",returnObject[@"token"]]);//视图将要消失时候调用
+                }
+                
+                [self cb_presentPopupViewController:successVC animationType:1 aligment:self.popAligment dismissed:nil];
+            }else if([returnObject[@"msg"] isEqualToString:@"3"]){
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"密码错误" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }else if([returnObject[@"msg"] isEqualToString:@"9"]){
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"服务器故障！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }else{
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"其他原因" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
             }
-            [self handleView];
-            [self cb_presentPopupViewController:successVC animationType:1 aligment:self.popAligment dismissed:nil];
-            
-            NSDictionary *dict = (NSDictionary *)returnObject;
-            NSLog(@"token--%@---",dict[@"token"]);
-        }else{
-            NSLog(@"失败");
-        }
-    }];
+     
+        }];
+    }else{
+//        NSLog(@"验证吗登陆");
+        [net GET:@"toLoginByVerificationCode" withParmers:dic1 do:^(id returnObject, BOOL isSuccess) {
+
+            if ([returnObject[@"msg"] isEqualToString:@"1"]) {
+                LoginSuccessViewController *successVC =[LoginSuccessViewController new];
+                successVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
+                if (self.popAligment == CBPopupViewAligmentCenter) {
+                    successVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
+                    successVC.view.layer.cornerRadius = 10.0;
+                    successVC.view.layer.masksToBounds = YES;
+                }else
+                {
+                    successVC.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 250);
+                }
+                [self handleView];
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:returnObject[@"token"] forKey:@"token"];
+                [userDefaults synchronize];
+                
+                if (self.returnTokenStr != nil) {
+                    self.returnTokenStr([NSString stringWithFormat:@"%@",returnObject[@"token"]]);//视图将要消失时候调用
+                }
+                
+                [self cb_presentPopupViewController:successVC animationType:1 aligment:self.popAligment dismissed:nil];
+                
+            }else if([returnObject[@"msg"] isEqualToString:@"2"]){
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"验证码已超时！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }else if([returnObject[@"msg"] isEqualToString:@"3"]){
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"验证码不存在！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }else if([returnObject[@"msg"] isEqualToString:@"9"]){
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"服务器故障！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+            }
+                
+           
+        }];
+        
+    }
     
     
-//    NSLog(@"手机号码是--%@,验证码是--%@",self.phoneTextField.text,self.verificationTextField.text);
 
 }
 
@@ -237,10 +318,16 @@
         self.verificationView.hidden =YES;
         self.passwordView.hidden =NO;
         [sender setTitle:@"验证码登录" forState:UIControlStateNormal];
+        
+        _isPassword =YES;
+        self.phoneTextField.placeholder =@"请输入账号";
+        
     }else{
         self.verificationView.hidden =NO;
         self.passwordView.hidden =YES;
         [sender setTitle:@"密码登录" forState:UIControlStateNormal];
+        self.phoneTextField.placeholder =@"请输入手机号码";
+        _isPassword =NO;
     }
     
 }
@@ -249,5 +336,10 @@
 -(void)back:(UIButton *)sender{
     [self cb_dismissPopupViewControllerAnimated:YES];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+}
+
 
 @end

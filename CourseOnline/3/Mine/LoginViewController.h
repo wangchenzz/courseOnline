@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+typedef void(^ReturnTokenStr)(NSString *tokenStr);
 
 @interface LoginViewController : UIViewController
+
+@property (nonatomic, copy) ReturnTokenStr returnTokenStr;
+
+-(void)returnTokenStr:(ReturnTokenStr)block;
 
 @end
 

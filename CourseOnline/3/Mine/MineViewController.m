@@ -24,6 +24,10 @@
 @property(nonatomic,strong) UITableView *tableView;
 
 @property(nonatomic,strong) UIButton *loginBtn;
+@property(nonatomic,strong) UILabel *accountNumber;
+@property(nonatomic,strong) UILabel *name;
+
+@property(nonatomic,strong) NSString *token;
 
 @property (assign, nonatomic) CBPopupViewAligment popAligment;
 
@@ -47,7 +51,7 @@
     self.tableView.delegate =self;
     self.tableView.dataSource =self;
     [self.view addSubview:self.tableView];
-    
+    [self.tableView reloadData];
     
     
     [self tableHeaderView];
@@ -85,29 +89,29 @@
         make.size.mas_equalTo(CGSizeMake(150, 40));
     }];
     
-//    UILabel *accountNumber = [UILabel new];
-//    accountNumber.text =@"账号：12121212";
-//    accountNumber.font =[UIFont systemFontOfSize:20];
-//    accountNumber.textColor =[UIColor whiteColor];
-//    [headView addSubview:accountNumber];
-//    [accountNumber mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(headPortrait.mas_right).offset(20);
-//        make.centerY.equalTo(headView).offset(-20);
-//        make.size.mas_equalTo(CGSizeMake(200, 40));
-//    }];
-//
-//
-//    UILabel *name = [UILabel new];
-//    name.text =@"名字：静思老师";
-//    name.font =[UIFont systemFontOfSize:20];
-//    name.textColor =[UIColor whiteColor];
-//    [headView addSubview:name];
-//    [name mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(headPortrait.mas_right).offset(20);
-//        make.centerY.equalTo(headView).offset(20);
-//        make.size.mas_equalTo(CGSizeMake(200, 40));
-//    }];
-//    [self.view addSubview:headView];
+    _accountNumber = [UILabel new];
+    _accountNumber.text =@"账号：12121212";
+    _accountNumber.font =[UIFont systemFontOfSize:20];
+    _accountNumber.textColor =[UIColor whiteColor];
+    [headView addSubview:_accountNumber];
+    [_accountNumber mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(headPortrait.mas_right).offset(20);
+        make.centerY.equalTo(headView).offset(-20);
+        make.size.mas_equalTo(CGSizeMake(200, 40));
+    }];
+
+
+    _name = [UILabel new];
+    _name.text =@"名字：静思老师";
+    _name.font =[UIFont systemFontOfSize:20];
+    _name.textColor =[UIColor whiteColor];
+    [headView addSubview:_name];
+    [_name mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(headPortrait.mas_right).offset(20);
+        make.centerY.equalTo(headView).offset(20);
+        make.size.mas_equalTo(CGSizeMake(200, 40));
+    }];
+    [self.view addSubview:headView];
     self.tableView.tableHeaderView =headView;
     
     UIView *footView =[UIView new];
@@ -116,6 +120,21 @@
 
 -(void)login:(UIButton *)sender{
     LoginViewController *loginVC =[LoginViewController new];
+    [loginVC returnTokenStr:^(NSString * _Nonnull tokenStr) {
+        self.token =tokenStr;
+//        NSLog(@"return token--%@",self.token);
+        
+        if (self.token.length>0) {
+            _accountNumber.hidden =NO;
+            _name.hidden =NO;
+            _loginBtn.hidden =YES;
+        }else{
+            _accountNumber.hidden =YES;
+            _name.hidden =YES;
+            _loginBtn.hidden =NO;
+        }
+        
+    }];
     loginVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
     if (self.popAligment == CBPopupViewAligmentCenter) {
         loginVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
@@ -165,6 +184,19 @@
 
 -(void)setUpId{
     SetUpIdController *setUpVC =[SetUpIdController new];
+    setUpVC.type =@"123";
+    [setUpVC returnIsExit:^(BOOL isExit) {
+        if (isExit ==NO) {
+            _accountNumber.hidden =NO;
+            _name.hidden =NO;
+            _loginBtn.hidden =YES;
+        }else{
+            _accountNumber.hidden =YES;
+            _name.hidden =YES;
+            _loginBtn.hidden =NO;
+        }
+    }];
+    
     setUpVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
     if (self.popAligment == CBPopupViewAligmentCenter) {
         setUpVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
@@ -174,6 +206,7 @@
     {
         setUpVC.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, 250);
     }
+    
     [self cb_presentPopupViewController:setUpVC animationType:1 aligment:self.popAligment dismissed:nil];
 }
 
@@ -198,8 +231,20 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.navigationBar.hidden = YES;
-
     self.navigationController.tabBarController.tabBar.hidden = NO;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.token =[userDefaults objectForKey:@"token"];
+//    NSLog(@"token--%@",self.token);
+    if (self.token.length>0) {
+        _accountNumber.hidden =NO;
+        _name.hidden =NO;
+        _loginBtn.hidden =YES;
+    }else{
+        _accountNumber.hidden =YES;
+        _name.hidden =YES;
+        _loginBtn.hidden =NO;
+    }
 }
 
 @end

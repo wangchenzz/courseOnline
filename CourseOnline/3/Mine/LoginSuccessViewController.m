@@ -92,6 +92,7 @@ make.top.equalTo(finishInformation.mas_bottom).offset(30);
 
 -(void)finisnInformation:(UIButton *)sender{
     SetUpIdController *setUpVC =[SetUpIdController new];
+    setUpVC.type =@"login";
     setUpVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
     if (self.popAligment == CBPopupViewAligmentCenter) {
         setUpVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
