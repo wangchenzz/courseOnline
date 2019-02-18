@@ -205,9 +205,12 @@
             
             [button startWithTime:10 title:@"点击重新获取" countDownTitle:@"秒" mainColor:ALLHeaderViewColor countColor:ALLHeaderViewColor];
             
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@",returnObject[@"msg"]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [alertView show];
             
+//            NSString *msg =[NSString stringWithFormat:@"%@",returnObject[@"msg"]];
+//            if ([msg isEqualToString:@"1"]) {
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"短信发送成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+//            }
 
         }];
     }
@@ -232,6 +235,7 @@
     if (_isPassword ==YES) {
 //        NSLog(@"密码登陆");
         [net GET:@"toLoginByPassword" withParmers:dic2 do:^(id returnObject, BOOL isSuccess) {
+            NSLog(@"returnObject---%@",returnObject);
             if ([returnObject[@"msg"] isEqualToString:@"1"]) {
                 LoginSuccessViewController *successVC =[LoginSuccessViewController new];
                 successVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
@@ -246,10 +250,12 @@
                 [self handleView];
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 [userDefaults setObject:returnObject[@"token"] forKey:@"token"];
+                [userDefaults setObject:self.phoneTextField.text forKey:@"account"];
                 [userDefaults synchronize];
                 
                 if (self.returnTokenStr != nil) {
-                    self.returnTokenStr([NSString stringWithFormat:@"%@",returnObject[@"token"]]);//视图将要消失时候调用
+//                    self.returnTokenStr([NSString stringWithFormat:@"%@",returnObject[@"token"]]);//视图将要消失时候调用
+                    self.returnTokenStr([NSString stringWithFormat:@"%@",returnObject[@"token"]], self.phoneTextField.text);
                 }
                 
                 [self cb_presentPopupViewController:successVC animationType:1 aligment:self.popAligment dismissed:nil];
@@ -283,10 +289,12 @@
                 [self handleView];
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 [userDefaults setObject:returnObject[@"token"] forKey:@"token"];
+                [userDefaults setObject:self.phoneTextField.text forKey:@"account"];
                 [userDefaults synchronize];
                 
                 if (self.returnTokenStr != nil) {
-                    self.returnTokenStr([NSString stringWithFormat:@"%@",returnObject[@"token"]]);//视图将要消失时候调用
+//                    self.returnTokenStr([NSString stringWithFormat:@"%@",returnObject[@"token"]]);//视图将要消失时候调用
+                     self.returnTokenStr([NSString stringWithFormat:@"%@",returnObject[@"token"]], self.phoneTextField.text);
                 }
                 
                 [self cb_presentPopupViewController:successVC animationType:1 aligment:self.popAligment dismissed:nil];

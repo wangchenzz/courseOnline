@@ -141,7 +141,7 @@
     }
     
     self.exitBtn =[UIButton buttonWithType:0];
-    [self.exitBtn setTitle:@"退出" forState:UIControlStateNormal];
+    [self.exitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
     self.exitBtn.backgroundColor =ALLHeaderViewColor;
     [self.exitBtn addTarget:self action:@selector(backHome:) forControlEvents:UIControlEventTouchDown];
     self.exitBtn.layer.cornerRadius =20;
@@ -154,7 +154,7 @@
     
     
     self.finBtn =[UIButton buttonWithType:0];
-    [self.finBtn setTitle:@"完成" forState:UIControlStateNormal];
+    [self.finBtn setTitle:@"完 成" forState:UIControlStateNormal];
     self.finBtn.backgroundColor =ALLHeaderViewColor;
     [self.finBtn addTarget:self action:@selector(backHome:) forControlEvents:UIControlEventTouchDown];
     self.finBtn.layer.cornerRadius =20;
@@ -250,6 +250,7 @@
 -(void)backHome:(UIButton *)sender{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:@"token"];
+    [userDefaults removeObjectForKey:@"account"];
     
     if (self.returnIsExit !=nil) {
         self.returnIsExit(YES);

@@ -73,7 +73,7 @@ static NSString *const footerId = @"footerId";
 //点击添加的点击事件
 -(void)addCourse:(id)sender{
     NameViewController *nameVC =[NameViewController new];
-    nameVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);;
+    nameVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
     if (self.popAligment == CBPopupViewAligmentCenter) {
         nameVC.view.frame = CGRectMake(0, 0, KScreenWidth/2+100, KScreenHeight-150);
         nameVC.view.layer.cornerRadius = 10.0;

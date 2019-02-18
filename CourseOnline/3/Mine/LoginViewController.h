@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-typedef void(^ReturnTokenStr)(NSString *tokenStr);
+typedef void(^ReturnTokenStr)(NSString *tokenStr,NSString *account);
 
 @interface LoginViewController : UIViewController
 

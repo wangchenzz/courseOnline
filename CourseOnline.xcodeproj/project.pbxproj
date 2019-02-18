@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040A09CB21C770C90093E368 /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A09CA21C770C90093E368 /* MyOrderViewController.m */; };
+		040A09CE21C7715E0093E368 /* MyCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A09CD21C7715E0093E368 /* MyCollectionViewController.m */; };
+		040A09D121C771A60093E368 /* MyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A09D021C771A60093E368 /* MyMessageViewController.m */; };
+		040A09D421C772090093E368 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A09D321C772090093E368 /* FeedbackViewController.m */; };
+		040A09D721C772510093E368 /* ContactUSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A09D621C772510093E368 /* ContactUSViewController.m */; };
+		040A09DA21C775DC0093E368 /* MyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A09D921C775DC0093E368 /* MyOrderCell.m */; };
 		04165F38219567EA00836D54 /* JSProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04165F37219567EA00836D54 /* JSProgressView.m */; };
 		04165F3B21956A6E00836D54 /* ShowMyCourseInfoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04165F3A21956A6E00836D54 /* ShowMyCourseInfoCollectionViewCell.m */; };
 		04309AF0217F1A3400CECFD7 /* errorHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04309AEF217F1A3400CECFD7 /* errorHeader.m */; };
@@ -104,6 +110,7 @@
 		0469BDAF2178707E0016183B /* CourseDesignBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0469BDAE2178707E0016183B /* CourseDesignBasicViewController.m */; };
 		0469BDB22178760E0016183B /* UserInfoBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0469BDB12178760E0016183B /* UserInfoBasicViewController.m */; };
 		0469BDB5217883D70016183B /* MainPageCourseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0469BDB4217883D70016183B /* MainPageCourseCollectionViewCell.m */; };
+		046D9BCB21EDC9D700841750 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046D9BCA21EDC9D700841750 /* MessageCell.m */; };
 		04D30AA92175756900D05C3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AA82175756900D05C3D /* main.m */; };
 		04D30AB42175756900D05C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D30AB32175756900D05C3D /* Assets.xcassets */; };
 		04D30AB72175756900D05C3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D30AB52175756900D05C3D /* LaunchScreen.storyboard */; };
@@ -118,6 +125,7 @@
 		04D30AF72175767C00D05C3D /* UIColor+niceColorTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AF32175767C00D05C3D /* UIColor+niceColorTip.m */; };
 		04D30AF82175767C00D05C3D /* UIImage+Render.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30AF52175767C00D05C3D /* UIImage+Render.m */; };
 		04D30B802175CEC900D05C3D /* MainPageBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D30B7F2175CEC900D05C3D /* MainPageBasicViewController.m */; };
+		04FA34E121FA9CD7001ECF0A /* CourseManagementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FA34E021FA9CD7001ECF0A /* CourseManagementModel.m */; };
 		F566AD2AE09EFDBCB262A3C1 /* libPods-CourseOnline.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA35F99E663C124FABC44D1C /* libPods-CourseOnline.a */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +147,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040A09C921C770C90093E368 /* MyOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderViewController.h; sourceTree = "<group>"; };
+		040A09CA21C770C90093E368 /* MyOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewController.m; sourceTree = "<group>"; };
+		040A09CC21C7715E0093E368 /* MyCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionViewController.h; sourceTree = "<group>"; };
+		040A09CD21C7715E0093E368 /* MyCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionViewController.m; sourceTree = "<group>"; };
+		040A09CF21C771A60093E368 /* MyMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMessageViewController.h; sourceTree = "<group>"; };
+		040A09D021C771A60093E368 /* MyMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMessageViewController.m; sourceTree = "<group>"; };
+		040A09D221C772090093E368 /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		040A09D321C772090093E368 /* FeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		040A09D521C772510093E368 /* ContactUSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactUSViewController.h; sourceTree = "<group>"; };
+		040A09D621C772510093E368 /* ContactUSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactUSViewController.m; sourceTree = "<group>"; };
+		040A09D821C775DC0093E368 /* MyOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderCell.h; sourceTree = "<group>"; };
+		040A09D921C775DC0093E368 /* MyOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderCell.m; sourceTree = "<group>"; };
 		04165F36219567EA00836D54 /* JSProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSProgressView.h; sourceTree = "<group>"; };
 		04165F37219567EA00836D54 /* JSProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSProgressView.m; sourceTree = "<group>"; };
 		04165F3921956A6E00836D54 /* ShowMyCourseInfoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowMyCourseInfoCollectionViewCell.h; sourceTree = "<group>"; };
@@ -336,6 +356,8 @@
 		0469BDB12178760E0016183B /* UserInfoBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoBasicViewController.m; sourceTree = "<group>"; };
 		0469BDB3217883D70016183B /* MainPageCourseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageCourseCollectionViewCell.h; sourceTree = "<group>"; };
 		0469BDB4217883D70016183B /* MainPageCourseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageCourseCollectionViewCell.m; sourceTree = "<group>"; };
+		046D9BC921EDC9D700841750 /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		046D9BCA21EDC9D700841750 /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		04D30AA42175756900D05C3D /* CourseOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D30AA82175756900D05C3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04D30AB32175756900D05C3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -366,6 +388,8 @@
 		04D30AF52175767C00D05C3D /* UIImage+Render.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Render.m"; sourceTree = "<group>"; };
 		04D30B7E2175CEC900D05C3D /* MainPageBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageBasicViewController.h; sourceTree = "<group>"; };
 		04D30B7F2175CEC900D05C3D /* MainPageBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageBasicViewController.m; sourceTree = "<group>"; };
+		04FA34DF21FA9CD6001ECF0A /* CourseManagementModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseManagementModel.h; sourceTree = "<group>"; };
+		04FA34E021FA9CD7001ECF0A /* CourseManagementModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseManagementModel.m; sourceTree = "<group>"; };
 		20FAD72C931413FE1A69F0B9 /* Pods-CourseOnline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseOnline.release.xcconfig"; path = "Pods/Target Support Files/Pods-CourseOnline/Pods-CourseOnline.release.xcconfig"; sourceTree = "<group>"; };
 		BA35F99E663C124FABC44D1C /* libPods-CourseOnline.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CourseOnline.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A0C0E4577E8A2DD9476720 /* Pods-CourseOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CourseOnline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CourseOnline/Pods-CourseOnline.debug.xcconfig"; sourceTree = "<group>"; };
@@ -431,6 +455,20 @@
 				043A2CB521A5471300832F05 /* MyMaterialViewController.m */,
 				043A2CB621A5471300832F05 /* OrderManageViewController.h */,
 				043A2CB721A5471300832F05 /* OrderManageViewController.m */,
+				040A09C921C770C90093E368 /* MyOrderViewController.h */,
+				040A09CA21C770C90093E368 /* MyOrderViewController.m */,
+				040A09D821C775DC0093E368 /* MyOrderCell.h */,
+				040A09D921C775DC0093E368 /* MyOrderCell.m */,
+				040A09CC21C7715E0093E368 /* MyCollectionViewController.h */,
+				040A09CD21C7715E0093E368 /* MyCollectionViewController.m */,
+				040A09CF21C771A60093E368 /* MyMessageViewController.h */,
+				040A09D021C771A60093E368 /* MyMessageViewController.m */,
+				046D9BC921EDC9D700841750 /* MessageCell.h */,
+				046D9BCA21EDC9D700841750 /* MessageCell.m */,
+				040A09D221C772090093E368 /* FeedbackViewController.h */,
+				040A09D321C772090093E368 /* FeedbackViewController.m */,
+				040A09D521C772510093E368 /* ContactUSViewController.h */,
+				040A09D621C772510093E368 /* ContactUSViewController.m */,
 				043A2CB821A5471300832F05 /* SetUpIdController.h */,
 				043A2CB921A5471300832F05 /* SetUpIdController.m */,
 				043A2CBA21A5471300832F05 /* UIButton+CountDown.h */,
@@ -454,6 +492,8 @@
 				043A2CC621A5471300832F05 /* CourseManagementCell.m */,
 				043A2CC721A5471300832F05 /* CourseManagementController.h */,
 				043A2CC821A5471300832F05 /* CourseManagementController.m */,
+				04FA34DF21FA9CD6001ECF0A /* CourseManagementModel.h */,
+				04FA34E021FA9CD7001ECF0A /* CourseManagementModel.m */,
 				043A2CC921A5471300832F05 /* EditViewController.h */,
 				043A2CCA21A5471300832F05 /* EditViewController.m */,
 				043A2CCB21A5471300832F05 /* HeaderReusableView.h */,
@@ -1039,6 +1079,7 @@
 				04D30AE92175765300D05C3D /* INetworking.m in Sources */,
 				0469BDB5217883D70016183B /* MainPageCourseCollectionViewCell.m in Sources */,
 				043A2D3521A5471300832F05 /* VideoEditViewController.m in Sources */,
+				040A09D121C771A60093E368 /* MyMessageViewController.m in Sources */,
 				043A2D1E21A5471300832F05 /* UIButton+CountDown.m in Sources */,
 				0445A0D1218708BC00FC9828 /* SimpleVedioView.m in Sources */,
 				045DA2B22179CEBA007CA7D8 /* CourseModel.m in Sources */,
@@ -1051,7 +1092,9 @@
 				043A2D3B21A5471300832F05 /* NSAttributedString+RichText.m in Sources */,
 				044D9EFE2181BC8D00F28324 /* AlertViewSpecialViewController.m in Sources */,
 				043A2D3221A5471300832F05 /* StudyReportViewController.m in Sources */,
+				040A09DA21C775DC0093E368 /* MyOrderCell.m in Sources */,
 				043A2D6E21A54C9E00832F05 /* SDWebImageManager.m in Sources */,
+				040A09D421C772090093E368 /* FeedbackViewController.m in Sources */,
 				043A2D6921A54C9E00832F05 /* SDImageCache.m in Sources */,
 				043A2D9121A54CA700832F05 /* MJPropertyType.m in Sources */,
 				043A2D3E21A5471300832F05 /* PictureModel.m in Sources */,
@@ -1072,6 +1115,7 @@
 				04165F38219567EA00836D54 /* JSProgressView.m in Sources */,
 				0436E7CE21A6AEC4003CD86C /* ContainScrollCollectionViewCell.m in Sources */,
 				043A2D1F21A5471300832F05 /* AddCourseContentViewController.m in Sources */,
+				040A09CB21C770C90093E368 /* MyOrderViewController.m in Sources */,
 				043A2D7021A54C9E00832F05 /* UIButton+WebCache.m in Sources */,
 				04D30B802175CEC900D05C3D /* MainPageBasicViewController.m in Sources */,
 				043A2D3821A5471300832F05 /* ArchiveFile.m in Sources */,
@@ -1081,8 +1125,10 @@
 				043A2D1621A5471300832F05 /* LoginSuccessViewController.m in Sources */,
 				043A2D7321A54C9E00832F05 /* UIImageView+HighlightedWebCache.m in Sources */,
 				043A2D4321A5471300832F05 /* CGXPickerUIBaseView.m in Sources */,
+				040A09CE21C7715E0093E368 /* MyCollectionViewController.m in Sources */,
 				043A2D1821A5471300832F05 /* MessageManageViewController.m in Sources */,
 				04D30AEF2175767400D05C3D /* NSString+Bounding.m in Sources */,
+				046D9BCB21EDC9D700841750 /* MessageCell.m in Sources */,
 				04D30AE62175764C00D05C3D /* UIView+Frame.m in Sources */,
 				045DA2B82179D7CE007CA7D8 /* timerTool.m in Sources */,
 				0469BDB22178760E0016183B /* UserInfoBasicViewController.m in Sources */,
@@ -1090,6 +1136,7 @@
 				043A2D7221A54C9E00832F05 /* UIImage+MultiFormat.m in Sources */,
 				043A2D3921A5471300832F05 /* ImageTextAttachment.m in Sources */,
 				043A2D2221A5471300832F05 /* ClassroomTestCell.m in Sources */,
+				040A09D721C772510093E368 /* ContactUSViewController.m in Sources */,
 				043A2D9521A54CA700832F05 /* NSObject+MJProperty.m in Sources */,
 				043A2D9321A54CA700832F05 /* NSObject+MJCoding.m in Sources */,
 				04309AF0217F1A3400CECFD7 /* errorHeader.m in Sources */,
@@ -1116,6 +1163,7 @@
 				044C3F52218AE28C00FB5A90 /* CourseDetailedInfoModel.m in Sources */,
 				043A2D6A21A54C9E00832F05 /* SDWebImageCompat.m in Sources */,
 				043A2D2821A5471300832F05 /* MaterialCell.m in Sources */,
+				04FA34E121FA9CD7001ECF0A /* CourseManagementModel.m in Sources */,
 				043A2D1B21A5471300832F05 /* MyMaterialViewController.m in Sources */,
 				043A2D1921A5471300832F05 /* MineViewController.m in Sources */,
 				043A2D3C21A5471300832F05 /* NSJSON+Extension.m in Sources */,

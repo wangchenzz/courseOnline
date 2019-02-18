@@ -14,6 +14,8 @@
 #import "EditViewController.h"
 #import "StatisticsViewController.h"
 
+#import "CourseManagementModel.h"
+
 
 @interface CourseManagementController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)UICollectionView *collectionView;
@@ -21,6 +23,14 @@
 @property (nonatomic,strong)UIView *cellContentView;
 @property (nonatomic,strong)UIView *rightContentView;
 @property (nonatomic,assign)BOOL isEdit;
+
+@property (nonatomic,strong)NSDictionary *indexDic;
+@property (nonatomic,strong)NSArray *indexAry;
+
+@property (nonatomic,strong)CourseManagementModel *model;
+
+@property (nonatomic,strong)NSString *course_id;
+@property (nonatomic,strong)NSString *course_state;
 
 @end
 
@@ -31,6 +41,12 @@ static NSString *const headerId = @"headerId";
 static NSString *const footerId = @"footerId";
 static NSTimeInterval kAnimationDuration = 0.3;
 
+-(NSArray *)indexAry{
+    if (!_indexAry) {
+        _indexAry =[NSArray array];
+    }
+    return _indexAry;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
     self.navigationController.tabBarController.tabBar.hidden = NO;
@@ -59,7 +75,7 @@ static NSTimeInterval kAnimationDuration = 0.3;
     [rightAddBtn setImage:rightAddImg forState:UIControlStateNormal];
     
     UIImage *rightEditImg = [UIImage imageNamed:@"编辑图标"];
-    UIButton *rightEditBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0., 30, 30)];
+    UIButton *rightEditBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [rightEditBtn addTarget:self action:@selector(editCourse) forControlEvents:UIControlEventTouchDown];
     [rightEditBtn setImage:rightEditImg forState:UIControlStateNormal];
     
@@ -110,7 +126,7 @@ static NSTimeInterval kAnimationDuration = 0.3;
     
     UIImage *leftImg2 = [UIImage imageNamed:@"下白"];
     UIButton *leftDownBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [leftDownBtn addTarget:self action:@selector(addCourse) forControlEvents:UIControlEventTouchDown];
+    [leftDownBtn addTarget:self action:@selector(xiaJia) forControlEvents:UIControlEventTouchDown];
     [leftDownBtn setImage:leftImg2 forState:UIControlStateNormal];
     
     UIImage *leftImg3 = [UIImage imageNamed:@"上灰"];
@@ -120,12 +136,12 @@ static NSTimeInterval kAnimationDuration = 0.3;
     
     UIImage *leftImg4 = [UIImage imageNamed:@"复制白"];
     UIButton *leftCopyBtn = [[UIButton alloc] initWithFrame:CGRectMake(100, 0, 30, 30)];
-    [leftCopyBtn addTarget:self action:@selector(addCourse) forControlEvents:UIControlEventTouchDown];
+    [leftCopyBtn addTarget:self action:@selector(fuZhi) forControlEvents:UIControlEventTouchDown];
     [leftCopyBtn setImage:leftImg4 forState:UIControlStateNormal];
     
     UIImage *leftImg5 = [UIImage imageNamed:@"删除白"];
     UIButton *leftDeleteBtn = [[UIButton alloc] initWithFrame:CGRectMake(150, 0, 30, 30)];
-    [leftDeleteBtn addTarget:self action:@selector(addCourse) forControlEvents:UIControlEventTouchDown];
+    [leftDeleteBtn addTarget:self action:@selector(shanChu) forControlEvents:UIControlEventTouchDown];
     [leftDeleteBtn setImage:leftImg5 forState:UIControlStateNormal];
     
     UIView *leftView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 30)];
@@ -140,21 +156,70 @@ static NSTimeInterval kAnimationDuration = 0.3;
     
     
     UIButton *finishBtn =[UIButton buttonWithType:0];
+    finishBtn.frame = CGRectMake(0, 0, 80, 30);
     [finishBtn setTitle:@"完成" forState:UIControlStateNormal];
     [finishBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [finishBtn addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchDown];
-     UIBarButtonItem *finishItem =[[UIBarButtonItem alloc]initWithCustomView:finishBtn];
+    
+    UIView *rightNaViView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+    rightNaViView.bounds = CGRectOffset(rightNaViView.bounds, 0, 0);
+    [rightNaViView addSubview:finishBtn];
+    
+     UIBarButtonItem *finishItem =[[UIBarButtonItem alloc]initWithCustomView:rightNaViView];
+    
     self.navigationItem.rightBarButtonItem =finishItem;
 
+}
+
+-(void)xiaJia{
+    NSLog(@"xiajia");
+    INetworking *net =[INetworking shareNet];
+    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+    dic[@"course_state"] =@"123";
+    dic[@"course_id"] =@"123";
+    [net GET:@"toUpdateCourse_state" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
+        
+        
+        [self.collectionView reloadData];
+        
+    }];
+}
+-(void)fuZhi{
+    NSLog(@"fuzhu");
+    
+    INetworking *net =[INetworking shareNet];
+    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+    dic[@"course_state"] =@"123";
+    dic[@"course_id"] =@"123";
+    [net GET:@"toUpdateCourse_state" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
+        
+        
+        [self.collectionView reloadData];
+        
+    }];
+}
+-(void)shanChu{
+    
+    INetworking *net =[INetworking shareNet];
+    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+    dic[@"course_state"] =@"123";
+    dic[@"course_id"] =@"123";
+    [net GET:@"toDeleteCourse_state" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
+        
+        [self.collectionView reloadData];
+        
+    }];
+    NSLog(@"shanchu");
 }
 
 -(void)editAction:(UIButton *)sender{
     sender.selected =!sender.selected;
     if (sender.selected ==YES) {
+        NSLog(@"选择");
             [sender setImage:[UIImage imageNamed:@"勾子"] forState:UIControlStateNormal];
 
     }else{
-
+        NSLog(@"未选择");
             [sender setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     }
 }
@@ -219,11 +284,31 @@ static NSTimeInterval kAnimationDuration = 0.3;
     [_collectionView registerClass:[CourseManagementCell class] forCellWithReuseIdentifier:cellId];
 //    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerId];
 //    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerId];
+    [self getServerData];
+    
+}
+
+-(void)getServerData{
+    INetworking *net =[INetworking shareNet];
+    NSMutableDictionary *dic =[NSMutableDictionary dictionary];
+    [net GET:@"index" withParmers:dic do:^(id returnObject, BOOL isSuccess) {
+
+        _indexDic =[NSDictionary dictionary];
+        _indexDic =returnObject[@"coursesList"];
+        _indexAry =[returnObject objectForKey:@"coursesList"];
+//        NSLog(@"count--%ld",[_indexAry count]);
+        [self.collectionView reloadData];
+
+    }];
+
 }
 
 #pragma mark --UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    if (_indexAry &&[_indexAry count]>0) {
+        return [_indexAry count];
+    }
     return 8;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -232,11 +317,34 @@ static NSTimeInterval kAnimationDuration = 0.3;
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CourseManagementCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    NSDictionary *dic =_indexAry[indexPath.row];
     cell.topImage.image = [UIImage imageNamed:@"图片2"];
-    cell.stateImage.image =[UIImage imageNamed:@"caogao"];
-    cell.botlabel.text =[NSString stringWithFormat:@"课程名称课程名称课程名称-%ld",(long)indexPath.row];
-    cell.momeylabel.text =@"￥1222.00";
-    cell.datelabel.text =@"2018/10/15 00:00";
+    if ([[NSString stringWithFormat:@"%@",dic[@"course_state"]] isEqualToString:@"1"]) {
+        cell.stateImage.image =[UIImage imageNamed:@"caogao"];
+    }else if ([[NSString stringWithFormat:@"%@",dic[@"course_state"]] isEqualToString:@"2"]) {
+        cell.stateImage.image =[UIImage imageNamed:@"shangjialv"];
+    }else{
+        cell.stateImage.image =[UIImage imageNamed:@"xiajia"];
+    }
+    
+    cell.botlabel.text =[NSString stringWithFormat:@"%@",dic[@"course_name"]];
+
+    if ([[NSString stringWithFormat:@"%@",dic[@"charging_method"]] isEqualToString:@"1"]) {
+        cell.momeylabel.text =@"免费";
+    }else{
+        cell.momeylabel.text =[NSString stringWithFormat:@"￥%@",dic[@"money"]];
+    }
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];//创建一个日期格式化器
+    dateFormatter.dateFormat=@"yyyy-MM-dd";//指定转date得日期格式化形式
+    NSString *date =[dateFormatter stringFromDate:dic[@"time"]];
+//    NSLog(@"date---%@",[NSString stringWithFormat:@"%@",dic[@"course_state"]]);
+    if ([date length]>0) {
+        
+        cell.datelabel.text =date;
+    }else{
+        cell.datelabel.text =@"2018/1/1 00:00";
+    }
+    
 
     return cell;
 }
@@ -254,6 +362,10 @@ static NSTimeInterval kAnimationDuration = 0.3;
 #pragma mark --UICollectionViewDelegate
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dic =_indexAry[indexPath.row];
+    NSLog(@"点击的课程ID-%@",dic[@"id"]);
+    _course_id =[NSString stringWithFormat:@"%@",dic[@"id"]];
+    NSLog(@"course_id-%@",_course_id);
      UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     //cell在当前collection的位置
     CGRect cellRect = [_collectionView convertRect:cell.frame toView:_collectionView];

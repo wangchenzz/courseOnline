@@ -38,7 +38,7 @@
         [_functionView addSubview:_stateImage];
         
         _botlabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 185, self.contentView.frame.size.width-20, 30)];
-        _botlabel.textAlignment = NSTextAlignmentLeft;
+        _botlabel.textAlignment = NSTextAlignmentCenter;
         _botlabel.textColor = [UIColor blackColor];
         _botlabel.font = [UIFont systemFontOfSize:15];
         [self.contentView addSubview:_botlabel];

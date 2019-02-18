@@ -17,6 +17,12 @@
 #import "MessageManageViewController.h"
 #import "OrderManageViewController.h"
 
+#import "MyOrderViewController.h"
+#import "MyCollectionViewController.h"
+#import "MyMessageViewController.h"
+#import "FeedbackViewController.h"
+#import "ContactUSViewController.h"
+
 #import "LoginViewController.h"
 
 @interface MineViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -28,12 +34,21 @@
 @property(nonatomic,strong) UILabel *name;
 
 @property(nonatomic,strong) NSString *token;
+@property(nonatomic,strong) NSString *account;
+@property(nonatomic,strong) NSArray *tableViewCount;
 
 @property (assign, nonatomic) CBPopupViewAligment popAligment;
 
 @end
 
 @implementation MineViewController
+
+-(NSArray *)tableViewCount{
+    if (_tableViewCount) {
+        _tableViewCount =[NSArray array];
+    }
+    return _tableViewCount;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,7 +66,7 @@
     self.tableView.delegate =self;
     self.tableView.dataSource =self;
     [self.view addSubview:self.tableView];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
     
     
     [self tableHeaderView];
@@ -120,12 +135,13 @@
 
 -(void)login:(UIButton *)sender{
     LoginViewController *loginVC =[LoginViewController new];
-    [loginVC returnTokenStr:^(NSString * _Nonnull tokenStr) {
+
+    [loginVC returnTokenStr:^(NSString * _Nonnull tokenStr, NSString * _Nonnull account) {
         self.token =tokenStr;
-//        NSLog(@"return token--%@",self.token);
         
         if (self.token.length>0) {
             _accountNumber.hidden =NO;
+            _accountNumber.text =[NSString stringWithFormat:@"账号：%@",self.account];
             _name.hidden =NO;
             _loginBtn.hidden =YES;
         }else{
@@ -133,7 +149,13 @@
             _name.hidden =YES;
             _loginBtn.hidden =NO;
         }
+        if (account.length==7) {
+            _tableViewCount =@[@"我的素材",@"作业管理",@"留言消息",@"订单管理"];
+        }else{
+            _tableViewCount =@[@"我的订单",@"我的收藏",@"我的留言",@"意见反馈",@"联系我们"];
+        }
         
+        [self.tableView reloadData];
     }];
     loginVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
     if (self.popAligment == CBPopupViewAligmentCenter) {
@@ -153,7 +175,7 @@
 }
 
 -(NSInteger )tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return _tableViewCount.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -162,10 +184,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     };
     
-    NSArray *ary =@[@"我的素材",@"作业管理",@"留言消息",@"订单管理"];
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text =[NSString stringWithFormat:@"%@",ary[indexPath.row]];
+    cell.textLabel.text =[NSString stringWithFormat:@"%@",_tableViewCount[indexPath.row]];
     cell.textLabel.font =[UIFont systemFontOfSize:25];
     cell.imageView.image =[UIImage imageNamed:@"菱形"];
     return cell;
@@ -195,6 +215,7 @@
             _name.hidden =YES;
             _loginBtn.hidden =NO;
         }
+        
     }];
     
     setUpVC.view.backgroundColor = ssRGBAlpha(241, 241, 241, 1);
@@ -212,18 +233,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row==0) {
-        MyMaterialViewController *myMaterialVC =[[MyMaterialViewController alloc]init];
-        [self.navigationController pushViewController:myMaterialVC animated:YES];
-    }else if (indexPath.row==1){
-        HomeworkManageViewController *homeworkManageVC =[[HomeworkManageViewController alloc]init];
-        [self.navigationController pushViewController:homeworkManageVC animated:YES];
-    }else if (indexPath.row ==2){
-        MessageManageViewController *messageManageVC =[[MessageManageViewController alloc]init];
-        [self.navigationController pushViewController:messageManageVC animated:YES];
+    if (self.account.length ==7) {
+        if (indexPath.row==0) {
+            MyMaterialViewController *myMaterialVC =[[MyMaterialViewController alloc]init];
+            [self.navigationController pushViewController:myMaterialVC animated:YES];
+        }else if (indexPath.row==1){
+            HomeworkManageViewController *homeworkManageVC =[[HomeworkManageViewController alloc]init];
+            [self.navigationController pushViewController:homeworkManageVC animated:YES];
+        }else if (indexPath.row ==2){
+            MessageManageViewController *messageManageVC =[[MessageManageViewController alloc]init];
+            [self.navigationController pushViewController:messageManageVC animated:YES];
+        }else{
+            OrderManageViewController *orderManageVC =[[OrderManageViewController alloc]init];
+            [self.navigationController pushViewController:orderManageVC animated:YES];
+        }
     }else{
-        OrderManageViewController *orderManageVC =[[OrderManageViewController alloc]init];
-        [self.navigationController pushViewController:orderManageVC animated:YES];
+        if (indexPath.row==0) {
+            MyOrderViewController *myOrderVC =[[MyOrderViewController alloc]init];
+            [self.navigationController pushViewController:myOrderVC animated:YES];
+        }else if (indexPath.row==1){
+            MyCollectionViewController *myCollectionVC =[[MyCollectionViewController alloc]init];
+            [self.navigationController pushViewController:myCollectionVC animated:YES];
+        }else if (indexPath.row ==2){
+            MyMessageViewController *messageVC =[[MyMessageViewController alloc]init];
+            [self.navigationController pushViewController:messageVC animated:YES];
+        }else if (indexPath.row ==3){
+            FeedbackViewController *feedbackVC =[[FeedbackViewController alloc]init];
+            [self.navigationController pushViewController:feedbackVC animated:YES];
+        }else{
+            ContactUSViewController *contactUSVC =[[ContactUSViewController alloc]init];
+            [self.navigationController pushViewController:contactUSVC animated:YES];
+        }
+        
     }
     
 }
@@ -235,16 +276,26 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.token =[userDefaults objectForKey:@"token"];
-//    NSLog(@"token--%@",self.token);
+    self.account =[userDefaults objectForKey:@"account"];
     if (self.token.length>0) {
         _accountNumber.hidden =NO;
+        _accountNumber.text =[NSString stringWithFormat:@"账号：%@",self.account];
         _name.hidden =NO;
         _loginBtn.hidden =YES;
+        if (self.account.length==7) {
+            _tableViewCount =@[@"我的素材",@"作业管理",@"留言消息",@"订单管理"];
+        }else{
+            _tableViewCount =@[@"我的订单",@"我的收藏",@"我的留言",@"意见反馈",@"联系我们"];
+        }
+        
+        
     }else{
         _accountNumber.hidden =YES;
         _name.hidden =YES;
         _loginBtn.hidden =NO;
+        _tableViewCount =@[@"我的订单",@"我的收藏",@"我的留言",@"意见反馈",@"联系我们"];
     }
+    
 }
 
 @end

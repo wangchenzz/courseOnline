@@ -99,19 +99,12 @@ NSString * const loginUrlStr = @"http://www.yueqiao.org/web/app/login.json";
 -(void)GET:(NSString*)URLString withParmers:(NSDictionary *)parmers do:(void(^)(id returnObject,BOOL isSuccess))myblok;{
 
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
-    
-//    session.requestSerializer = [AFJSONRequestSerializer];
-//    session.responseSerializer = [AFHTTPResponseSerializer];
-    
+
     session.requestSerializer.timeoutInterval = 10;
     
     session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
     
     session.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-//    session.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-//    
-//    session.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
 
     session.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@"application/json", @"text/html",@"text/json", @"text/javascript", nil];
     
